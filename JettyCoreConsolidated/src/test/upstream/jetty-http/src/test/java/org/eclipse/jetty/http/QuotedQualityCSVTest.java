@@ -1,0 +1,455 @@
+//
+// ========================================================================
+// Copyright (c) 1995 Mort Bay Consulting Pty Ltd and others.
+//
+// This program and the accompanying materials are made available under the
+// terms of the Eclipse Public License v. 2.0 which is available at
+// https://www.eclipse.org/legal/epl-2.0, or the Apache License, Version 2.0
+// which is available at https://www.apache.org/licenses/LICENSE-2.0.
+//
+// SPDX-License-Identifier: EPL-2.0 OR Apache-2.0
+// ========================================================================
+//
+
+package org.eclipse.jetty.http;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Stream;
+
+import org.hamcrest.Matchers;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
+
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.contains;
+import static org.hamcrest.Matchers.emptyIterable;
+import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.not;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
+public class QuotedQualityCSVTest
+{
+    @Test
+    public void test7231Sec532Example1()
+    {
+        QuotedQualityCSV values = new QuotedQualityCSV();
+        values.addValue(" audio/*; q=0.2, audio/basic");
+        assertThat(values, Matchers.contains("audio/basic", "audio/*"));
+    }
+
+    @Test
+    public void test7231Sec532Example2()
+    {
+        QuotedQualityCSV values = new QuotedQualityCSV();
+        values.addValue("text/plain; q=0.5, text/html,");
+        values.addValue("text/x-dvi; q=0.8, text/x-c");
+        assertThat(values, Matchers.contains("text/html", "text/x-c", "text/x-dvi", "text/plain"));
+    }
+
+    @Test
+    public void test7231Sec532Example3()
+    {
+        QuotedQualityCSV values = new QuotedQualityCSV();
+        values.addValue("text/*, text/plain, text/plain;format=flowed, */*");
+
+        // Note this sort is only on quality and not the most specific type as per 5.3.2
+        assertThat(values, Matchers.contains("text/*", "text/plain", "text/plain;format=flowed", "*/*"));
+    }
+
+    @Test
+    public void test7231532Example3MostSpecific()
+    {
+        QuotedQualityCSV values = new QuotedQualityCSV(QuotedQualityCSV.MOST_SPECIFIC_MIME_ORDERING);
+        values.addValue("text/*, text/plain, text/plain;format=flowed, */*");
+
+        assertThat(values, Matchers.contains("text/plain;format=flowed", "text/plain", "text/*", "*/*"));
+    }
+
+    @Test
+    public void test7231Sec532Example4()
+    {
+        QuotedQualityCSV values = new QuotedQualityCSV();
+        values.addValue("text/*;q=0.3, text/html;q=0.7, text/html;level=1,");
+        values.addValue("text/html;level=2;q=0.4, */*;q=0.5");
+        assertThat(values, Matchers.contains(
+            "text/html;level=1",
+            "text/html",
+            "*/*",
+            "text/html;level=2",
+            "text/*"
+        ));
+    }
+
+    @Test
+    public void test7231Sec534Example1()
+    {
+        QuotedQualityCSV values = new QuotedQualityCSV();
+        values.addValue("compress, gzip");
+        values.addValue("");
+        values.addValue("*");
+        values.addValue("compress;q=0.5, gzip;q=1.0");
+        values.addValue("gzip;q=1.0, identity; q=0.5, *;q=0");
+
+        assertThat(values, Matchers.contains(
+            "compress",
+            "gzip",
+            "*",
+            "gzip",
+            "gzip",
+            "compress",
+            "identity"
+        ));
+    }
+
+    @Test
+    public void testOWS()
+    {
+        QuotedQualityCSV values = new AllowWhiteSpaceInParameterQQCSV();
+        values.addValue("  value 0.5  ;  p = v  ;  q =0.5  ,  value 1.0 ");
+        assertThat(values, Matchers.contains(
+            "value 1.0",
+            "value 0.5;p=v"));
+    }
+
+    @Test
+    public void testEmptyListItems()
+    {
+        QuotedQualityCSV values = new QuotedQualityCSV();
+        values.addValue(",aaaa,  , bbbb,\"\" ,,x;q=0,cccc,");
+        assertThat(values, Matchers.contains(
+            "aaaa",
+            "bbbb",
+            "\"\"",
+            "cccc"));
+    }
+
+    public static Stream<Arguments> quoted()
+    {
+        return Stream.of(
+            Arguments.of("\"a\"", new String[] {"\"a\""}),
+            Arguments.of("\"a,b\"", new String[] {"\"a,b\""}),
+            Arguments.of("\"a\",\"b\"", new String[] {"\"a\"", "\"b\""}),
+            Arguments.of("\"a\";q=1", new String[] {"\"a\""}),
+            Arguments.of("\"a\";q=\"1\"", new String[] {"\"a\""}),
+            Arguments.of("  \"value 0.5  ;  p = v  ;  q = \\\"0.5\\\"  ,  value 1.0 \"  ", new String[] {"\"value 0.5  ;  p = v  ;  q = \\\"0.5\\\"  ,  value 1.0 \""})
+        );
+    }
+
+    @ParameterizedTest
+    @MethodSource("quoted")
+    public void testQuoted(String value, String... expected)
+    {
+        QuotedQualityCSV values = new AllowWhiteSpaceInParameterQQCSV();
+        values.addValue(value);
+        assertThat(values, Matchers.contains(expected));
+    }
+
+    public static Stream<Arguments> badQuoted()
+    {
+        return Stream.of(
+            Arguments.of("\"a", new String[] {"\"a"}),
+            Arguments.of("a,\"b", new String[] {"a", "\"b"})
+        );
+    }
+
+    @ParameterizedTest
+    @MethodSource("badQuoted")
+    public void testBadQuoted(String value, String... expected)
+    {
+        QuotedQualityCSV values = new QuotedQualityCSV();
+        assertThrows(IllegalArgumentException.class, () -> values.addValue(value));
+
+
+        QuotedQualityCSV allowed = new QuotedQualityCSV()
+        {
+            @Override
+            protected void onComplianceViolation(ComplianceViolation violation, String value)
+            {
+                if (violation != HttpCompliance.Violation.BAD_QUOTES_IN_TOKEN)
+                    super.onComplianceViolation(violation, value);
+            }
+        };
+        allowed.addValue(value);
+        if (expected.length == 0)
+            assertThat(allowed, emptyIterable());
+        else
+            assertThat(allowed, Matchers.contains(expected));
+    }
+
+    @Test
+    public void testParamValueQuoted()
+    {
+        QuotedQualityCSV values = new AllowWhiteSpaceInParameterQQCSV();
+        values.addValue("  value 0.5  ;  p = \"v  ;  q = \\\"0.5\\\"  ,  value 1.0 \"  ");
+        assertThat(values, Matchers.contains(
+            "value 0.5;p=\"v  ;  q = \\\"0.5\\\"  ,  value 1.0 \""));
+    }
+
+    @Test
+    public void testOpenQuote()
+    {
+        QuotedQualityCSV values = new QuotedQualityCSV();
+        assertThrows(IllegalArgumentException.class, () -> values.addValue("value;p=\"v"));
+
+        QuotedQualityCSV allowed = new QuotedQualityCSV()
+        {
+            @Override
+            protected void onComplianceViolation(ComplianceViolation violation, String value)
+            {
+                if (violation != HttpCompliance.Violation.BAD_QUOTES_IN_TOKEN)
+                    super.onComplianceViolation(violation, value);
+            }
+        };
+        allowed.addValue("value;q=1;p=\"v");
+        assertThat(allowed, Matchers.contains("value;p=\"v"));
+    }
+
+    @Test
+    public void testQuotedQualityWithWhitespace()
+    {
+        QuotedQualityCSV values = new AllowWhiteSpaceInParameterQQCSV();
+        values.addValue("  value 0.5  ;  p = v  ;  q = \"0.5\"  ,  value 1.0 ");
+        assertThat(values, Matchers.contains(
+            "value 1.0",
+            "value 0.5;p=v"));
+    }
+
+    @Test
+    public void testBadQuality()
+    {
+        QuotedQualityCSV values = new QuotedQualityCSV();
+        values.addValue("value0.5;p=v;q=0.5,value1.0,valueBad;q=X");
+        assertThat(values, Matchers.contains(
+            "value1.0",
+            "value0.5;p=v"));
+    }
+
+    public static Stream<Arguments> emptyValues()
+    {
+        List<String> bad = new ArrayList<>();
+
+        bad.add(null);
+        bad.add("");
+
+        bad.add(";");
+        bad.add("=");
+        bad.add(",");
+
+        bad.add(";;");
+        bad.add(";=");
+        bad.add(";,");
+        bad.add("=;");
+        bad.add("==");
+        bad.add("=,");
+        bad.add(",;");
+        bad.add(",=");
+        bad.add(",,");
+
+        bad.add(";;;");
+        bad.add(";;=");
+        bad.add(";;,");
+        bad.add(";=;");
+        bad.add(";==");
+        bad.add(";=,");
+        bad.add(";,;");
+        bad.add(";,=");
+        bad.add(";,,");
+
+        bad.add("=;;");
+        bad.add("=;=");
+        bad.add("=;,");
+        bad.add("==;");
+        bad.add("===");
+        bad.add("==,");
+        bad.add("=,;");
+        bad.add("=,=");
+        bad.add("=,,");
+
+        bad.add(",;;");
+        bad.add(",;=");
+        bad.add(",;,");
+        bad.add(",=;");
+        bad.add(",==");
+        bad.add(",=,");
+        bad.add(",,;");
+        bad.add(",,=");
+        bad.add(",,,");
+
+        // bad.add("x;=1");
+        bad.add("=1");
+        bad.add("q=x");
+        bad.add("q=0");
+        bad.add("q=");
+        bad.add("q=,");
+        bad.add("q=;");
+        bad.add("foo;q=0");
+        bad.add("\"foo\";q=0");
+
+        return bad.stream().map(Arguments::of);
+    }
+
+    @ParameterizedTest
+    @MethodSource("emptyValues")
+    public void testEmptyValues(String emptyValue)
+    {
+        QuotedQualityCSV values = new QuotedQualityCSV();
+
+        // This should NOT throw an exception
+        values.addValue(emptyValue);
+
+        // There shouldn't be any values as a result.
+        assertThat(values, emptyIterable());
+    }
+
+    private static final String[] preferBrotli = {"br", "gzip"};
+    private static final String[] preferGzip = {"gzip", "br"};
+    private static final String[] noFormats = {};
+
+    @Test
+    public void testFirefoxContentEncodingWithBrotliPreference()
+    {
+        QuotedQualityCSV values = new QuotedQualityCSV(preferBrotli);
+        values.addValue("gzip, deflate, br");
+        assertThat(values, contains("br", "gzip", "deflate"));
+    }
+
+    @Test
+    public void testFirefoxContentEncodingWithGzipPreference()
+    {
+        QuotedQualityCSV values = new QuotedQualityCSV(preferGzip);
+        values.addValue("gzip, deflate, br");
+        assertThat(values, contains("gzip", "br", "deflate"));
+    }
+
+    @Test
+    public void testFirefoxContentEncodingWithNoPreference()
+    {
+        QuotedQualityCSV values = new QuotedQualityCSV(noFormats);
+        values.addValue("gzip, deflate, br");
+        assertThat(values, contains("gzip", "deflate", "br"));
+    }
+
+    @Test
+    public void testChromeContentEncodingWithBrotliPreference()
+    {
+        QuotedQualityCSV values = new QuotedQualityCSV(preferBrotli);
+        values.addValue("gzip, deflate, sdch, br");
+        assertThat(values, contains("br", "gzip", "deflate", "sdch"));
+    }
+
+    @Test
+    public void testComplexEncodingWithGzipPreference()
+    {
+        QuotedQualityCSV values = new QuotedQualityCSV(preferGzip);
+        values.addValue("gzip;q=0.9, identity;q=0.1, *;q=0.01, deflate;q=0.9, sdch;q=0.7, br;q=0.9");
+        assertThat(values, contains("gzip", "br", "deflate", "sdch", "identity", "*"));
+    }
+
+    @Test
+    public void testComplexEncodingWithBrotliPreference()
+    {
+        QuotedQualityCSV values = new QuotedQualityCSV(preferBrotli);
+        values.addValue("gzip;q=0.9, identity;q=0.1, *;q=0, deflate;q=0.9, sdch;q=0.7, br;q=0.99");
+        assertThat(values, contains("br", "gzip", "deflate", "sdch", "identity"));
+    }
+
+    @Test
+    public void testStarEncodingWithGzipPreference()
+    {
+        QuotedQualityCSV values = new QuotedQualityCSV(preferGzip);
+        values.addValue("br, *");
+        assertThat(values, contains("*", "br"));
+    }
+
+    @Test
+    public void testStarEncodingWithBrotliPreference()
+    {
+        QuotedQualityCSV values = new QuotedQualityCSV(preferBrotli);
+        values.addValue("gzip, *");
+        assertThat(values, contains("*", "gzip"));
+    }
+
+    @Test
+    public void testSameQuality()
+    {
+        QuotedQualityCSV values = new QuotedQualityCSV();
+        values.addValue("one;q=0.5,two;q=0.5,three;q=0.5");
+        assertThat(values.getValues(), Matchers.contains("one", "two", "three"));
+    }
+
+    @Test
+    public void testExtraParams()
+    {
+        QuotedQualityCSV values = new QuotedQualityCSV();
+        values.addValue("two;p=2;q=0.5,one;q=1.0;p=1,zero;q=0;p=0,three;p=3;q=0.3;o=3");
+        assertThat(values.getValues(), Matchers.contains("one;p=1", "two;p=2", "three;p=3;o=3"));
+    }
+
+    @Test
+    public void testNoQuality()
+    {
+        QuotedQualityCSV values = new QuotedQualityCSV();
+        values.addValue("one,two;,three;x=y");
+        assertThat(values.getValues(), Matchers.contains("one", "two", "three;x=y"));
+    }
+
+    @Test
+    public void testParamsOnly()
+    {
+        List<String> results = new ArrayList<>();
+
+        QuotedQualityCSV values = new QuotedQualityCSV()
+        {
+            @Override
+            protected void parsedValueAndParams(StringBuilder buffer)
+            {
+                results.add("parsedValueAndParams: " + buffer.toString());
+
+                super.parsedValueAndParams(buffer);
+            }
+
+            @Override
+            protected void parsedValue(StringBuilder buffer)
+            {
+                results.add("parsedValue: " + buffer.toString());
+
+                super.parsedValue(buffer);
+            }
+
+            @Override
+            protected void parsedParam(StringBuilder buffer, int valueLength, int paramName, int paramValue)
+            {
+                String param = buffer.substring(paramName, buffer.length());
+                results.add("parsedParam: " + param);
+
+                super.parsedParam(buffer, valueLength, paramName, paramValue);
+            }
+        };
+
+        // The provided string is not legal according to some RFCs ( not a token because of = and not a parameter because not preceded by ; )
+        // The string is legal according to RFC7239 which allows for just parameters (called forwarded-pairs)
+        // To properly parse RFC7239 forwarded-paris, the QuotedCSV itself is used, not the QuotedQualityCSV.
+        values.addValue("p=0.5,q=0.5");
+
+        // The QuotedCSV implementation is lenient and adopts the later interpretation and thus sees q=0.5 and p=0.5 both as parameters
+        assertThat(values.size(), is(0));
+        assertThat(results, contains("parsedParam: p=0.5", "parsedParam: q=0.5"));
+
+        // However the QuotedQualityCSV does not include value-less quality parameters.
+        assertThat(values, not(contains("")));
+    }
+
+    private static class AllowWhiteSpaceInParameterQQCSV extends QuotedQualityCSV
+    {
+        @Override
+        protected void onComplianceViolation(ComplianceViolation violation, String value)
+        {
+            if (HttpCompliance.Violation.WHITESPACE_IN_PARAMETER.equals(violation))
+                return;
+            super.onComplianceViolation(violation, value);
+        }
+    }
+}

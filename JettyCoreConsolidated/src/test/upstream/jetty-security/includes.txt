@@ -1,0 +1,16 @@
+org/eclipse/jetty/security/BasicAuthenticatorTest.java
+org/eclipse/jetty/security/DefaultIdentityServiceTest.java
+org/eclipse/jetty/security/FormAuthenticatorTest.java
+org/eclipse/jetty/security/HashLoginServiceTest.java
+org/eclipse/jetty/security/jaas/JAASLdapLoginServiceTest.java
+org/eclipse/jetty/security/jaas/JAASLoginServiceTest.java
+org/eclipse/jetty/security/jaas/spi/PropertyFileLoginModuleTest.java
+org/eclipse/jetty/security/jaas/TestHandler.java
+org/eclipse/jetty/security/jaas/TestLoginModule.java
+org/eclipse/jetty/security/PathMethodMappedTest.java
+org/eclipse/jetty/security/PersistAuthenticationCredentialsTest.java
+org/eclipse/jetty/security/PropertyUserStoreTest.java
+org/eclipse/jetty/security/SecurityHandlerTest.java
+org/eclipse/jetty/security/SPNEGOAuthenticatorTest.java
+org/eclipse/jetty/security/TestLoginService.java
+org/eclipse/jetty/security/UserStoreTest.java

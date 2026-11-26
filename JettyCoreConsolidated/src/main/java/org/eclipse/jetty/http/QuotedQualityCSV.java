@@ -1,0 +1,405 @@
+//
+// ========================================================================
+// Copyright (c) 1995 Mort Bay Consulting Pty Ltd and others.
+//
+// This program and the accompanying materials are made available under the
+// terms of the Eclipse Public License v. 2.0 which is available at
+// https://www.eclipse.org/legal/epl-2.0, or the Apache License, Version 2.0
+// which is available at https://www.apache.org/licenses/LICENSE-2.0.
+//
+// SPDX-License-Identifier: EPL-2.0 OR Apache-2.0
+// ========================================================================
+//
+
+package org.eclipse.jetty.http;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Locale;
+import java.util.Objects;
+import java.util.function.BiConsumer;
+import java.util.function.Supplier;
+import java.util.function.ToIntFunction;
+import java.util.stream.Collectors;
+
+import org.eclipse.jetty.util.StringUtil;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+/**
+ * Implements a quoted comma separated list of quality values
+ * in accordance with RFC7230 and RFC7231.
+ * Values are returned sorted in quality order, with OWS and the
+ * quality parameters removed.
+ *
+ * @see "https://tools.ietf.org/html/rfc7230#section-3.2.6"
+ * @see "https://tools.ietf.org/html/rfc7230#section-7"
+ * @see "https://tools.ietf.org/html/rfc7231#section-5.3.1"
+ */
+public class QuotedQualityCSV extends QuotedCSV implements Iterable<String>
+{
+    private static final Logger LOG = LoggerFactory.getLogger(QuotedQualityCSV.class);
+
+    /**
+     * Lambda to apply a most specific MIME encoding secondary ordering.
+     *
+     * @see "https://tools.ietf.org/html/rfc7231#section-5.3.2"
+     */
+    public static ToIntFunction<String> MOST_SPECIFIC_MIME_ORDERING = s ->
+    {
+        if ("*/*".equals(s))
+            return 0;
+        if (s.endsWith("/*"))
+            return 1;
+        if (s.indexOf(';') < 0)
+            return 2;
+        return 3;
+    };
+
+    private final List<QualityValue> _qualities = new ArrayList<>();
+    private final ComplianceViolation.Mode _compliance;
+    private final ComplianceViolation.Listener _listener;
+    private final ToIntFunction<String> _secondaryOrdering;
+    private QualityValue _lastQualityValue;
+    private boolean _sorted = false;
+
+    /**
+     * Sorts values with equal quality according to the length of the value String.
+     */
+    public QuotedQualityCSV()
+    {
+        this((ToIntFunction<String>)null);
+    }
+
+    /**
+     * Sorts values with equal quality according to given order.
+     *
+     * @param preferredOrder Array indicating the preferred order of known values
+     */
+    public QuotedQualityCSV(String[] preferredOrder)
+    {
+        this(List.of(preferredOrder));
+    }
+
+    /**
+     * Sorts values with equal quality according to given order.
+     *
+     * @param preferredOrder Array indicating the preferred order of known values
+     */
+    public QuotedQualityCSV(List<String> preferredOrder)
+    {
+        this(secondaryOrdering(preferredOrder));
+    }
+
+    /**
+     * Orders values with equal quality with the given function.
+     *
+     * @param secondaryOrdering Function to apply an ordering other than specified by quality, highest values are sorted first.
+     */
+    public QuotedQualityCSV(ToIntFunction<String> secondaryOrdering)
+    {
+        this(null, null, secondaryOrdering);
+    }
+
+    public QuotedQualityCSV(ComplianceViolation.Mode compliance, ComplianceViolation.Listener listener, ToIntFunction<String> secondaryOrdering)
+    {
+        _compliance = compliance;
+        _listener = listener;
+        _secondaryOrdering = secondaryOrdering == null ? s -> 0 : secondaryOrdering;
+    }
+
+    /**
+     * Orders values with equal quality with the given function.
+     *
+     * @param httpFields the {@link HttpFields} instance to extract the {@link ComplianceViolation.Mode} and {@link ComplianceViolation.Listener}.
+     * @param secondaryOrdering Function to apply an ordering other than specified by quality, highest values are sorted first.
+     */
+    public QuotedQualityCSV(HttpFields httpFields, ToIntFunction<String> secondaryOrdering)
+    {
+        this(MutableHttpFields.copyHttpCompliance(httpFields), extractComplianceViolationListener(httpFields), secondaryOrdering);
+    }
+
+    private static ComplianceViolation.Listener extractComplianceViolationListener(HttpFields httpFields)
+    {
+        Supplier<ComplianceViolation.Listener> supplier = MutableHttpFields.copyComplianceListener(httpFields);
+        return (supplier != null) ? supplier.get() : null;
+    }
+
+    private QuotedQualityCSV(ComplianceViolation.Mode compliance, ComplianceViolation.Listener listener, List<String> preferredOrder)
+    {
+        this(compliance, listener, secondaryOrdering(preferredOrder));
+    }
+
+    private static ToIntFunction<String> secondaryOrdering(List<String> preferredOrder)
+    {
+        return (s) ->
+        {
+            for (int i = 0; i < preferredOrder.size(); ++i)
+            {
+                if (preferredOrder.get(i).equals(s))
+                    return preferredOrder.size() - i;
+            }
+
+            if ("*".equals(s))
+                return preferredOrder.size();
+
+            return 0;
+        };
+    }
+
+    @Override
+    protected void parsedValueAndParams(StringBuilder buffer)
+    {
+        // No value? then this isn't a Quality based CSV. Skip.
+        if (buffer.isEmpty())
+            return;
+
+        super.parsedValueAndParams(buffer);
+
+        // We have to convert to String anyway for QualityValue below.
+        String value = buffer.toString();
+        // Ensure we don't have whitespace or control only value
+        if (StringUtil.isBlank(value))
+            return;
+
+        // Collect full value with parameters
+        if (_lastQualityValue != null)
+        {
+            _lastQualityValue = new QualityValue(value, _lastQualityValue._quality, _lastQualityValue._index);
+            _qualities.set(_lastQualityValue._index, _lastQualityValue);
+        }
+    }
+
+    @Override
+    protected void parsedValue(StringBuilder buffer)
+    {
+        // ignore empty values
+        if (buffer.isEmpty())
+            return;
+
+        // We have to convert to String anyway for QualityValue below.
+        String value = buffer.toString();
+
+        // Ignore blank values
+        if (StringUtil.isBlank(value))
+            return;
+
+        // This is just the value, without parameters.
+        // Assume a quality of ONE
+        _lastQualityValue = new QualityValue(value, 1.0D, _qualities.size());
+        _qualities.add(_lastQualityValue);
+    }
+
+    @Override
+    protected void parsedParam(StringBuilder buffer, int valueLength, int paramName, int paramValue)
+    {
+        // No value? then this isn't a Quality based CSV. Skip.
+        if (valueLength <= 0)
+            return;
+
+        _sorted = false;
+
+        if (paramName < 0)
+        {
+            if (buffer.charAt(buffer.length() - 1) == ';')
+                buffer.setLength(buffer.length() - 1);
+        }
+        else if (paramValue >= 0 &&
+            buffer.charAt(paramName) == 'q' && paramValue > paramName &&
+            buffer.length() >= paramName && buffer.charAt(paramName + 1) == '=')
+        {
+            double q;
+            try
+            {
+                q = (_keepQuotes && buffer.charAt(paramValue) == '"')
+                    ? Double.valueOf(buffer.substring(paramValue + 1, buffer.length() - 1))
+                    : Double.valueOf(buffer.substring(paramValue));
+            }
+            catch (Exception e)
+            {
+                if (LOG.isTraceEnabled())
+                    LOG.trace("IGNORED", e);
+                q = 0.0D;
+            }
+            buffer.setLength(Math.max(0, paramName - 1));
+
+            if (q != 1.0D)
+            {
+                _lastQualityValue = new QualityValue(buffer.toString(), q, _lastQualityValue._index);
+                _qualities.set(_lastQualityValue._index, _lastQualityValue);
+            }
+        }
+    }
+
+    @Override
+    public List<String> getValues()
+    {
+        if (!_sorted)
+            sort();
+        return super.getValues();
+    }
+
+    @Override
+    public Iterator<String> iterator()
+    {
+        if (!_sorted)
+            sort();
+        return super.iterator();
+    }
+
+    protected void sort()
+    {
+        List<String> values = getMutableValues();
+        values.clear();
+        _qualities.stream()
+            .filter((qv) -> qv._quality != 0.0D)
+            .sorted()
+            .map(QualityValue::getValue)
+            .collect(Collectors.toCollection(() -> values));
+        _sorted = true;
+    }
+
+    public List<QualityValue> getQualityValues()
+    {
+        return _qualities.stream().sorted().toList();
+    }
+
+    @Override
+    protected void onComplianceViolation(ComplianceViolation violation, String value)
+    {
+        if (_compliance != null)
+        {
+            if (!ComplianceUtils.allows(_compliance, violation, _listener))
+                throw new HttpException.RuntimeException(HttpStatus.BAD_REQUEST_400, "Invalid quoted-quality: " + value);
+        }
+        else
+        {
+            super.onComplianceViolation(violation, value);
+        }
+    }
+
+    /**
+     * <p>A <em>quality value</em>, that is a value with an associated weight parameter, as
+     * defined in <a href="https://www.rfc-editor.org/rfc/rfc9110.html#section-12.4.2">RFC 9110</a>.</p>
+     * <p>A quality value appears in HTTP headers such as {@code Accept}, {@code Accept-Encoding},
+     * etc. for example in this form:</p>
+     * <pre>{@code
+     * Accept-Encoding: gzip; q=1, br; q=0.5, zstd; q=0.1
+     * }</pre>
+     */
+    public class QualityValue implements Comparable<QualityValue>
+    {
+        private final String _value;
+        private final double _quality;
+        private final int _index;
+
+        private QualityValue(String value, double quality, int index)
+        {
+            _value = value;
+            _quality = quality;
+            _index = index;
+        }
+
+        /**
+         * @return the value
+         */
+        public String getValue()
+        {
+            return _value;
+        }
+
+        /**
+         * @return the weight
+         */
+        public double getWeight()
+        {
+            return _quality;
+        }
+
+        /**
+         * @return whether the weight is greater than zero
+         */
+        public boolean isAcceptable()
+        {
+            return getWeight() > 0.0D;
+        }
+
+        @Override
+        public int hashCode()
+        {
+            return Objects.hash(_quality, _value, _index);
+        }
+
+        @Override
+        public boolean equals(Object obj)
+        {
+            if (!(obj instanceof QualityValue that))
+                return false;
+            return _quality == that._quality && Objects.equals(_value, that._value) && _index == that._index;
+        }
+
+        @Override
+        public int compareTo(QualityValue o)
+        {
+            // sort highest quality first
+            int compare = Double.compare(o._quality, _quality);
+            if (compare == 0)
+            {
+                // then sort secondary order highest first
+                compare = Integer.compare(_secondaryOrdering.applyAsInt(o._value), _secondaryOrdering.applyAsInt(_value));
+                if (compare == 0)
+                    // then sort index lowest first
+                    compare = -Integer.compare(o._index, _index);
+            }
+            return compare;
+        }
+
+        @Override
+        public String toString()
+        {
+            return String.format(Locale.ROOT, "%s@%x[%s,q=%f,i=%d]",
+                getClass().getSimpleName(),
+                hashCode(),
+                getValue(),
+                getWeight(),
+                _index);
+        }
+    }
+
+    /**
+     * @deprecated use {@link QuotedQualityCSV} instead
+     */
+    @Deprecated(since = "12.1.6", forRemoval = true)
+    public static class Compliant extends QuotedQualityCSV
+    {
+        public Compliant(ComplianceViolation.Mode complianceMode, BiConsumer<ComplianceViolation, String> violationNotifier, String[] preferredOrder)
+        {
+            this(complianceMode, violationNotifier, List.of(preferredOrder));
+        }
+
+        public Compliant(ComplianceViolation.Mode complianceMode, BiConsumer<ComplianceViolation, String> violationNotifier, List<String> preferredOrder)
+        {
+            super(complianceMode, new ComplianceViolation.Listener()
+            {
+                @Override
+                public void onComplianceViolation(ComplianceViolation.Event event)
+                {
+                    violationNotifier.accept(event.violation(), event.details());
+                }
+            }, preferredOrder);
+        }
+
+        public Compliant(ComplianceViolation.Mode complianceMode, BiConsumer<ComplianceViolation, String> violationNotifier, ToIntFunction<String> secondaryOrdering)
+        {
+            super(complianceMode, new ComplianceViolation.Listener()
+            {
+                @Override
+                public void onComplianceViolation(ComplianceViolation.Event event)
+                {
+                    violationNotifier.accept(event.violation(), event.details());
+                }
+            }, secondaryOrdering);
+        }
+    }
+}

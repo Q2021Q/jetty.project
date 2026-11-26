@@ -1,0 +1,15 @@
+{
+  "args": [
+    "C:\\Users\\Kevin\\.m2\\wrapper\\dists\\apache-maven-3.9.12\\59fe215c0ad6947fea90184bf7add084544567b927287592651fda3782e0e798\\bin\\mvn.cmd",
+    "-B",
+    "-ntp",
+    "-o",
+    "-Dmaven.repo.local=C:\\Users\\Kevin\\AppData\\Local\\Temp\\jcc-770f5e4\\repository",
+    "org.apache.maven.plugins:maven-install-plugin:3.1.4:install-file",
+    "-Dfile=C:\\Users\\Kevin\\AppData\\Local\\Temp\\jcc-770f5e4\\integration-check\\target\\jetty-core-consolidated-12.1.15.jar",
+    "-DpomFile=C:\\Users\\Kevin\\AppData\\Local\\Temp\\jcc-770f5e4\\verified17\\pom.xml"
+  ],
+  "jdk": "C:\\Program Files\\Java\\jdk-17",
+  "cwd": "C:\\Users\\Kevin\\AppData\\Local\\Temp\\jcc-770f5e4\\verified17",
+  "exit_code": 0
+}

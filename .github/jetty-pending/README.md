@@ -108,6 +108,7 @@ Static validation covers YAML, Python syntax, selection consistency, original
 method presence, workflow structure and selector compilation. Maven and Jetty
 tests are not run during this preparation.
 
-The first hosted execution must verify tool downloads, dependency resolution,
-extension discovery, XML naming/display capture, reactor classpaths, all eight
-outcomes, timeouts and artifact upload. This workflow does not approve G5.
+Recorded Windows results, the owner-reported Linux run on GitHub and the decision
+to defer corrections until reproduction on Linux are documented in the
+[eight-case investigation](../../documentation/jetty-core-12.1.15-ocho-incidencias.md).
+Linux artifacts remain to be linked and verified. This workflow does not approve G5.

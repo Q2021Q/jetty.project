@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: org.eclipse.jetty.util.thread.strategy.ExecutionStrategyTest
+-------------------------------------------------------------------------------
+Tests run: 36, Failures: 0, Errors: 0, Skipped: 24, Time elapsed: 13.48 s -- in org.eclipse.jetty.util.thread.strategy.ExecutionStrategyTest

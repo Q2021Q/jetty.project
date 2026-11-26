@@ -1,0 +1,5 @@
+org/eclipse/jetty/compression/gzip/AbstractGzipTest.java
+org/eclipse/jetty/compression/gzip/ConfiguredGzipOutputStreamTest.java
+org/eclipse/jetty/compression/gzip/GzipCompressionTest.java
+org/eclipse/jetty/compression/gzip/GzipDecoderSourceTest.java
+org/eclipse/jetty/compression/gzip/GzipEncoderSinkTest.java

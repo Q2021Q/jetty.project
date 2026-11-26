@@ -1,0 +1,5 @@
+org/eclipse/jetty/compression/AbstractCompressionTest.java
+org/eclipse/jetty/compression/CompressionDecoderSourceTest.java
+org/eclipse/jetty/compression/CompressionEncoderSinkTest.java
+org/eclipse/jetty/compression/CompressionHandlerTest.java
+org/eclipse/jetty/compression/CompressionTest.java

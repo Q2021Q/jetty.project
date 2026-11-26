@@ -1,0 +1,29 @@
+{
+  "jar": "C:\\Users\\Kevin\\AppData\\Local\\Temp\\jcc-770f5e4\\integration-check\\target\\jetty-core-consolidated-12.1.15.jar",
+  "sha256": "40e6e5c7f45a6d74408aeb35adfe6ee4de13d9559bb1456db8aaea36e874b214",
+  "commit": "770f5e4d1c39673d6356163118a1e6bf1117ced3",
+  "source_and_fixture_files": 1589,
+  "upstream_classes": 1601,
+  "additional_package_metadata": 23,
+  "original_resources": 6,
+  "config_resources": 154,
+  "services": {
+    "META-INF/services/org.eclipse.jetty.http.HttpFieldPreEncoder": [
+      "org.eclipse.jetty.http.Http10FieldPreEncoder",
+      "org.eclipse.jetty.http.Http11FieldPreEncoder",
+      "org.eclipse.jetty.http2.hpack.HpackFieldPreEncoder"
+    ],
+    "META-INF/services/org.eclipse.jetty.io.ssl.ALPNProcessor$Server": [
+      "org.eclipse.jetty.alpn.java.server.JDK9ServerALPNProcessor"
+    ],
+    "META-INF/services/org.eclipse.jetty.compression.Compression": [
+      "org.eclipse.jetty.compression.gzip.GzipCompression"
+    ]
+  },
+  "version_metadata": {
+    "buildNumber": "770f5e4d1c39673d6356163118a1e6bf1117ced3",
+    "timestamp": "1793840657000",
+    "version": "12.1.15",
+    "scmUrl": "scm:git:https://github.com/jetty/jetty.project.git/jetty-core/jetty-util"
+  }
+}

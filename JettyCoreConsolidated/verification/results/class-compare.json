@@ -1,0 +1,468 @@
+{
+  "identical_class_files": 1578,
+  "differences": [
+    {
+      "name": "org/eclipse/jetty/server/AbstractConnector$1.class",
+      "instruction_and_signatures_match": true,
+      "difference": [
+        "--- \n",
+        "+++ \n",
+        "@@ -63,3 +63,3 @@\n",
+        "   #54 = Utf8               Lorg/eclipse/jetty/server/AbstractConnector$1;",
+        "-  #55 = Utf8               arg0",
+        "+  #55 = Utf8               component",
+        "   #56 = Utf8               Ljava/lang/Object;",
+        "@@ -106,3 +106,3 @@\n",
+        "             0      11     1 this$0   Lorg/eclipse/jetty/server/AbstractConnector;",
+        "-            0      11     2  arg0   Ljava/lang/Object;",
+        "+            0      11     2 component   Ljava/lang/Object;",
+        " "
+      ]
+    },
+    {
+      "name": "org/eclipse/jetty/server/ForwardedRequestCustomizer$3.class",
+      "instruction_and_signatures_match": true,
+      "difference": [
+        "--- \n",
+        "+++ \n",
+        "@@ -53,3 +53,3 @@\n",
+        "   #44 = Utf8               Lorg/eclipse/jetty/server/ForwardedRequestCustomizer$3;",
+        "-  #45 = Utf8               arg0",
+        "+  #45 = Utf8               base",
+        "   #46 = Utf8               Lorg/eclipse/jetty/util/Attributes;",
+        "@@ -123,3 +123,3 @@\n",
+        "             0      16     1 this$0   Lorg/eclipse/jetty/server/ForwardedRequestCustomizer;",
+        "-            0      16     2  arg0   Lorg/eclipse/jetty/util/Attributes;",
+        "+            0      16     2  base   Lorg/eclipse/jetty/util/Attributes;",
+        " "
+      ]
+    },
+    {
+      "name": "org/eclipse/jetty/server/SecureRequestCustomizer$SecureRequestWithSslSessionData$1.class",
+      "instruction_and_signatures_match": true,
+      "difference": [
+        "--- \n",
+        "+++ \n",
+        "@@ -63,3 +63,3 @@\n",
+        "   #54 = Utf8               Lorg/eclipse/jetty/server/SecureRequestCustomizer$SecureRequestWithSslSessionData$1;",
+        "-  #55 = Utf8               arg0",
+        "+  #55 = Utf8               base",
+        "   #56 = Utf8               Lorg/eclipse/jetty/util/Attributes;",
+        "@@ -119,3 +119,3 @@\n",
+        "             0      16     0  this   Lorg/eclipse/jetty/server/SecureRequestCustomizer$SecureRequestWithSslSessionData$1;",
+        "-            0      16     1  arg0   Lorg/eclipse/jetty/util/Attributes;",
+        "+            0      16     1  base   Lorg/eclipse/jetty/util/Attributes;",
+        " "
+      ]
+    },
+    {
+      "name": "org/eclipse/jetty/server/handler/DoSHandler$1.class",
+      "instruction_and_signatures_match": true,
+      "difference": [
+        "--- \n",
+        "+++ \n",
+        "@@ -51,3 +51,3 @@\n",
+        "   #42 = Utf8               Lorg/eclipse/jetty/server/handler/DoSHandler$1;",
+        "-  #43 = Utf8               arg0",
+        "+  #43 = Utf8               scheduler",
+        "   #44 = Utf8               Lorg/eclipse/jetty/util/thread/Scheduler;",
+        "@@ -94,3 +94,3 @@\n",
+        "             0      11     1 this$0   Lorg/eclipse/jetty/server/handler/DoSHandler;",
+        "-            0      11     2  arg0   Lorg/eclipse/jetty/util/thread/Scheduler;",
+        "+            0      11     2 scheduler   Lorg/eclipse/jetty/util/thread/Scheduler;",
+        " "
+      ]
+    },
+    {
+      "name": "org/eclipse/jetty/server/handler/ErrorHandler$ErrorRequest$1.class",
+      "instruction_and_signatures_match": true,
+      "difference": [
+        "--- \n",
+        "+++ \n",
+        "@@ -65,3 +65,3 @@\n",
+        "   #56 = Utf8               Lorg/eclipse/jetty/server/handler/ErrorHandler$ErrorRequest$1;",
+        "-  #57 = Utf8               arg0",
+        "+  #57 = Utf8               base",
+        "   #58 = Utf8               Lorg/eclipse/jetty/util/Attributes;",
+        "@@ -124,3 +124,3 @@\n",
+        "             0      22     0  this   Lorg/eclipse/jetty/server/handler/ErrorHandler$ErrorRequest$1;",
+        "-            0      22     1  arg0   Lorg/eclipse/jetty/util/Attributes;",
+        "+            0      22     1  base   Lorg/eclipse/jetty/util/Attributes;",
+        " "
+      ]
+    },
+    {
+      "name": "org/eclipse/jetty/server/handler/GracefulHandler$1.class",
+      "instruction_and_signatures_match": true,
+      "difference": [
+        "--- \n",
+        "+++ \n",
+        "@@ -58,3 +58,3 @@\n",
+        "   #49 = Utf8               Lorg/eclipse/jetty/server/handler/GracefulHandler$1;",
+        "-  #50 = Utf8               arg0",
+        "+  #50 = Utf8               component",
+        "   #51 = Utf8               Ljava/lang/Object;",
+        "@@ -98,3 +98,3 @@\n",
+        "             0      11     1 this$0   Lorg/eclipse/jetty/server/handler/GracefulHandler;",
+        "-            0      11     2  arg0   Ljava/lang/Object;",
+        "+            0      11     2 component   Ljava/lang/Object;",
+        " "
+      ]
+    },
+    {
+      "name": "org/eclipse/jetty/server/handler/SizeLimitHandler$SizeLimitResponseWrapper$1.class",
+      "instruction_and_signatures_match": true,
+      "difference": [
+        "--- \n",
+        "+++ \n",
+        "@@ -73,3 +73,3 @@\n",
+        "    #64 = Utf8               Lorg/eclipse/jetty/server/handler/SizeLimitHandler$SizeLimitResponseWrapper$1;",
+        "-   #65 = Utf8               arg0",
+        "+   #65 = Utf8               fields",
+        "    #66 = Utf8               Lorg/eclipse/jetty/http/HttpFields$Mutable;",
+        "@@ -140,3 +140,3 @@\n",
+        "             0      16     1 this$1   Lorg/eclipse/jetty/server/handler/SizeLimitHandler$SizeLimitResponseWrapper;",
+        "-            0      16     2  arg0   Lorg/eclipse/jetty/http/HttpFields$Mutable;",
+        "+            0      16     2 fields   Lorg/eclipse/jetty/http/HttpFields$Mutable;",
+        " "
+      ]
+    },
+    {
+      "name": "org/eclipse/jetty/server/internal/HttpConnection$HttpStreamOverHTTP1$1.class",
+      "instruction_and_signatures_match": true,
+      "difference": [
+        "--- \n",
+        "+++ \n",
+        "@@ -33,13 +33,13 @@\n",
+        "   #24 = Utf8               Lorg/eclipse/jetty/server/internal/HttpConnection$HttpStreamOverHTTP1$1;",
+        "-  #25 = Utf8               arg0",
+        "+  #25 = Utf8               beginNanoTime",
+        "   #26 = Utf8               J",
+        "-  #27 = Utf8               arg1",
+        "+  #27 = Utf8               method",
+        "   #28 = Utf8               Ljava/lang/String;",
+        "-  #29 = Utf8               arg2",
+        "+  #29 = Utf8               uri",
+        "   #30 = Utf8               Lorg/eclipse/jetty/http/HttpURI;",
+        "-  #31 = Utf8               arg3",
+        "+  #31 = Utf8               version",
+        "   #32 = Utf8               Lorg/eclipse/jetty/http/HttpVersion;",
+        "-  #33 = Utf8               arg4",
+        "+  #33 = Utf8               headers",
+        "   #34 = Utf8               Lorg/eclipse/jetty/http/HttpFields;",
+        "-  #35 = Utf8               arg5",
+        "+  #35 = Utf8               contentLength",
+        "   #36 = Utf8               is100ContinueExpected",
+        "@@ -88,8 +88,8 @@\n",
+        "             0      21     1 this$1   Lorg/eclipse/jetty/server/internal/HttpConnection$HttpStreamOverHTTP1;",
+        "-            0      21     2  arg0   J",
+        "-            0      21     4  arg1   Ljava/lang/String;",
+        "-            0      21     5  arg2   Lorg/eclipse/jetty/http/HttpURI;",
+        "-            0      21     6  arg3   Lorg/eclipse/jetty/http/HttpVersion;",
+        "-            0      21     7  arg4   Lorg/eclipse/jetty/http/HttpFields;",
+        "-            0      21     8  arg5   J",
+        "+            0      21     2 beginNanoTime   J",
+        "+            0      21     4 method   Ljava/lang/String;",
+        "+            0      21     5   uri   Lorg/eclipse/jetty/http/HttpURI;",
+        "+            0      21     6 version   Lorg/eclipse/jetty/http/HttpVersion;",
+        "+            0      21     7 headers   Lorg/eclipse/jetty/http/HttpFields;",
+        "+            0      21     8 contentLength   J",
+        " "
+      ]
+    },
+    {
+      "name": "org/eclipse/jetty/http/MultiPartByteRanges$Parser$1.class",
+      "instruction_and_signatures_match": true,
+      "difference": [
+        "--- \n",
+        "+++ \n",
+        "@@ -68,3 +68,3 @@\n",
+        "   #59 = Utf8               Lorg/eclipse/jetty/http/MultiPartByteRanges$Parser$1;",
+        "-  #60 = Utf8               arg0",
+        "+  #60 = Utf8               content",
+        "   #61 = Utf8               Lorg/eclipse/jetty/io/Content$Source;",
+        "@@ -128,3 +128,3 @@\n",
+        "             0      11     1 this$0   Lorg/eclipse/jetty/http/MultiPartByteRanges$Parser;",
+        "-            0      11     2  arg0   Lorg/eclipse/jetty/io/Content$Source;",
+        "+            0      11     2 content   Lorg/eclipse/jetty/io/Content$Source;",
+        " "
+      ]
+    },
+    {
+      "name": "org/eclipse/jetty/http/MultiPartFormData$Parser$2.class",
+      "instruction_and_signatures_match": true,
+      "difference": [
+        "--- \n",
+        "+++ \n",
+        "@@ -105,5 +105,5 @@\n",
+        "    #96 = Utf8               Lorg/eclipse/jetty/http/MultiPartFormData$Parser$2;",
+        "-   #97 = Utf8               arg0",
+        "+   #97 = Utf8               content",
+        "    #98 = Utf8               Lorg/eclipse/jetty/io/Content$Source;",
+        "-   #99 = Utf8               arg1",
+        "+   #99 = Utf8               invocationType",
+        "   #100 = Utf8               Lorg/eclipse/jetty/util/thread/Invocable$InvocationType;",
+        "@@ -179,4 +179,4 @@\n",
+        "             0      12     1 this$0   Lorg/eclipse/jetty/http/MultiPartFormData$Parser;",
+        "-            0      12     2  arg0   Lorg/eclipse/jetty/io/Content$Source;",
+        "-            0      12     3  arg1   Lorg/eclipse/jetty/util/thread/Invocable$InvocationType;",
+        "+            0      12     2 content   Lorg/eclipse/jetty/io/Content$Source;",
+        "+            0      12     3 invocationType   Lorg/eclipse/jetty/util/thread/Invocable$InvocationType;",
+        " "
+      ]
+    },
+    {
+      "name": "org/eclipse/jetty/http/content/FileMappingHttpContentFactory$MultiBufferFileMappedHttpContent$1.class",
+      "instruction_and_signatures_match": true,
+      "difference": [
+        "--- \n",
+        "+++ \n",
+        "@@ -74,3 +74,3 @@\n",
+        "   #65 = Utf8               Lorg/eclipse/jetty/http/content/FileMappingHttpContentFactory$MultiBufferFileMappedHttpContent$1;",
+        "-  #66 = Utf8               arg0",
+        "+  #66 = Utf8               callback",
+        "   #67 = Utf8               Lorg/eclipse/jetty/util/Callback;",
+        "@@ -171,3 +171,3 @@\n",
+        "             0      48     1 this$0   Lorg/eclipse/jetty/http/content/FileMappingHttpContentFactory$MultiBufferFileMappedHttpContent;",
+        "-            0      48     2  arg0   Lorg/eclipse/jetty/util/Callback;",
+        "+            0      48     2 callback   Lorg/eclipse/jetty/util/Callback;",
+        " "
+      ]
+    },
+    {
+      "name": "org/eclipse/jetty/io/RetainableByteBuffer$DynamicCapacity$1.class",
+      "instruction_and_signatures_match": true,
+      "difference": [
+        "--- \n",
+        "+++ \n",
+        "@@ -78,3 +78,3 @@\n",
+        "   #69 = Utf8               Lorg/eclipse/jetty/io/RetainableByteBuffer$DynamicCapacity$1;",
+        "-  #70 = Utf8               arg0",
+        "+  #70 = Utf8               callback",
+        "   #71 = Utf8               Lorg/eclipse/jetty/util/Callback;",
+        "@@ -143,3 +143,3 @@\n",
+        "             0      22     1 this$0   Lorg/eclipse/jetty/io/RetainableByteBuffer$DynamicCapacity;",
+        "-            0      22     2  arg0   Lorg/eclipse/jetty/util/Callback;",
+        "+            0      22     2 callback   Lorg/eclipse/jetty/util/Callback;",
+        " "
+      ]
+    },
+    {
+      "name": "org/eclipse/jetty/http2/server/AuthorityCustomizer$1.class",
+      "instruction_and_signatures_match": true,
+      "difference": [
+        "--- \n",
+        "+++ \n",
+        "@@ -31,3 +31,3 @@\n",
+        "   #22 = Utf8               Lorg/eclipse/jetty/http2/server/AuthorityCustomizer$1;",
+        "-  #23 = Utf8               arg0",
+        "+  #23 = Utf8               wrapped",
+        "   #24 = Utf8               Lorg/eclipse/jetty/server/Request;",
+        "@@ -83,3 +83,3 @@\n",
+        "             0      16     1 this$0   Lorg/eclipse/jetty/http2/server/AuthorityCustomizer;",
+        "-            0      16     2  arg0   Lorg/eclipse/jetty/server/Request;",
+        "+            0      16     2 wrapped   Lorg/eclipse/jetty/server/Request;",
+        " "
+      ]
+    },
+    {
+      "name": "org/eclipse/jetty/http2/HTTP2Session$1.class",
+      "instruction_and_signatures_match": true,
+      "difference": [
+        "--- \n",
+        "+++ \n",
+        "@@ -62,3 +62,3 @@\n",
+        "   #53 = Utf8               Lorg/eclipse/jetty/http2/HTTP2Session$1;",
+        "-  #54 = Utf8               arg0",
+        "+  #54 = Utf8               promise",
+        "   #55 = Utf8               Lorg/eclipse/jetty/util/Promise;",
+        "@@ -115,6 +115,6 @@\n",
+        "             0      11     1 this$0   Lorg/eclipse/jetty/http2/HTTP2Session;",
+        "-            0      11     2  arg0   Lorg/eclipse/jetty/util/Promise;",
+        "+            0      11     2 promise   Lorg/eclipse/jetty/util/Promise;",
+        "       LocalVariableTypeTable:",
+        "         Start  Length  Slot  Name   Signature",
+        "-            0      11     2  arg0   Lorg/eclipse/jetty/util/Promise<Lorg/eclipse/jetty/http2/api/Stream;>;",
+        "+            0      11     2 promise   Lorg/eclipse/jetty/util/Promise<Lorg/eclipse/jetty/http2/api/Stream;>;",
+        " "
+      ]
+    },
+    {
+      "name": "org/eclipse/jetty/http2/HTTP2Stream$1.class",
+      "instruction_and_signatures_match": true,
+      "difference": [
+        "--- \n",
+        "+++ \n",
+        "@@ -39,3 +39,3 @@\n",
+        "   #30 = Utf8               Lorg/eclipse/jetty/http2/HTTP2Stream$1;",
+        "-  #31 = Utf8               arg0",
+        "+  #31 = Utf8               callback",
+        "   #32 = Utf8               Lorg/eclipse/jetty/util/Callback;",
+        "@@ -77,3 +77,3 @@\n",
+        "             0      11     1 this$0   Lorg/eclipse/jetty/http2/HTTP2Stream;",
+        "-            0      11     2  arg0   Lorg/eclipse/jetty/util/Callback;",
+        "+            0      11     2 callback   Lorg/eclipse/jetty/util/Callback;",
+        " "
+      ]
+    },
+    {
+      "name": "org/eclipse/jetty/security/SecurityHandler$1.class",
+      "instruction_and_signatures_match": true,
+      "difference": [
+        "--- \n",
+        "+++ \n",
+        "@@ -45,3 +45,3 @@\n",
+        "   #36 = Utf8               Lorg/eclipse/jetty/security/SecurityHandler$1;",
+        "-  #37 = Utf8               arg0",
+        "+  #37 = Utf8               fields",
+        "   #38 = Utf8               Lorg/eclipse/jetty/http/HttpFields$Mutable;",
+        "@@ -96,3 +96,3 @@\n",
+        "             0      11     1 this$0   Lorg/eclipse/jetty/security/SecurityHandler;",
+        "-            0      11     2  arg0   Lorg/eclipse/jetty/http/HttpFields$Mutable;",
+        "+            0      11     2 fields   Lorg/eclipse/jetty/http/HttpFields$Mutable;",
+        " "
+      ]
+    },
+    {
+      "name": "org/eclipse/jetty/security/SecurityHandler$2.class",
+      "instruction_and_signatures_match": true,
+      "difference": [
+        "--- \n",
+        "+++ \n",
+        "@@ -35,4 +35,4 @@\n",
+        "   #26 = Utf8               Lorg/eclipse/jetty/security/SecurityHandler$2;",
+        "-  #27 = Utf8               arg0",
+        "-  #28 = Utf8               arg1",
+        "+  #27 = Utf8               request",
+        "+  #28 = Utf8               wrapped",
+        "   #29 = Utf8               Lorg/eclipse/jetty/server/Response;",
+        "@@ -103,4 +103,4 @@\n",
+        "             0      24     1 this$0   Lorg/eclipse/jetty/security/SecurityHandler;",
+        "-            0      24     2  arg0   Lorg/eclipse/jetty/server/Request;",
+        "-            0      24     3  arg1   Lorg/eclipse/jetty/server/Response;",
+        "+            0      24     2 request   Lorg/eclipse/jetty/server/Request;",
+        "+            0      24     3 wrapped   Lorg/eclipse/jetty/server/Response;",
+        " "
+      ]
+    },
+    {
+      "name": "org/eclipse/jetty/security/authentication/FormAuthenticator$1.class",
+      "instruction_and_signatures_match": true,
+      "difference": [
+        "--- \n",
+        "+++ \n",
+        "@@ -31,3 +31,3 @@\n",
+        "   #22 = Utf8               Lorg/eclipse/jetty/security/authentication/FormAuthenticator$1;",
+        "-  #23 = Utf8               arg0",
+        "+  #23 = Utf8               wrapped",
+        "   #24 = Utf8               Lorg/eclipse/jetty/server/Request;",
+        "@@ -78,3 +78,3 @@\n",
+        "             0      16     1 this$0   Lorg/eclipse/jetty/security/authentication/FormAuthenticator;",
+        "-            0      16     2  arg0   Lorg/eclipse/jetty/server/Request;",
+        "+            0      16     2 wrapped   Lorg/eclipse/jetty/server/Request;",
+        " "
+      ]
+    },
+    {
+      "name": "org/eclipse/jetty/rewrite/handler/RewriteEncodingRule$EncodingHandler$1.class",
+      "instruction_and_signatures_match": true,
+      "difference": [
+        "--- \n",
+        "+++ \n",
+        "@@ -90,3 +90,3 @@\n",
+        "    #81 = Utf8               Lorg/eclipse/jetty/rewrite/handler/RewriteEncodingRule$EncodingHandler$1;",
+        "-   #82 = Utf8               arg0",
+        "+   #82 = Utf8               fields",
+        "    #83 = Utf8               Lorg/eclipse/jetty/http/HttpFields$Mutable;",
+        "@@ -158,3 +158,3 @@\n",
+        "             0      11     1 this$1   Lorg/eclipse/jetty/rewrite/handler/RewriteEncodingRule$EncodingHandler;",
+        "-            0      11     2  arg0   Lorg/eclipse/jetty/http/HttpFields$Mutable;",
+        "+            0      11     2 fields   Lorg/eclipse/jetty/http/HttpFields$Mutable;",
+        " "
+      ]
+    },
+    {
+      "name": "org/eclipse/jetty/rewrite/handler/RewriteEncodingRule$EncodingHandler$2.class",
+      "instruction_and_signatures_match": true,
+      "difference": [
+        "--- \n",
+        "+++ \n",
+        "@@ -31,5 +31,5 @@\n",
+        "   #22 = Utf8               Lorg/eclipse/jetty/rewrite/handler/RewriteEncodingRule$EncodingHandler$2;",
+        "-  #23 = Utf8               arg0",
+        "+  #23 = Utf8               request",
+        "   #24 = Utf8               Lorg/eclipse/jetty/server/Request;",
+        "-  #25 = Utf8               arg1",
+        "+  #25 = Utf8               wrapped",
+        "   #26 = Utf8               Lorg/eclipse/jetty/server/Response;",
+        "@@ -89,4 +89,4 @@\n",
+        "             0      18     1 this$1   Lorg/eclipse/jetty/rewrite/handler/RewriteEncodingRule$EncodingHandler;",
+        "-            0      18     2  arg0   Lorg/eclipse/jetty/server/Request;",
+        "-            0      18     3  arg1   Lorg/eclipse/jetty/server/Response;",
+        "+            0      18     2 request   Lorg/eclipse/jetty/server/Request;",
+        "+            0      18     3 wrapped   Lorg/eclipse/jetty/server/Response;",
+        " "
+      ]
+    },
+    {
+      "name": "org/eclipse/jetty/rewrite/handler/RewriteLanguageRule$LanguageHandler$1.class",
+      "instruction_and_signatures_match": true,
+      "difference": [
+        "--- \n",
+        "+++ \n",
+        "@@ -90,3 +90,3 @@\n",
+        "    #81 = Utf8               Lorg/eclipse/jetty/rewrite/handler/RewriteLanguageRule$LanguageHandler$1;",
+        "-   #82 = Utf8               arg0",
+        "+   #82 = Utf8               fields",
+        "    #83 = Utf8               Lorg/eclipse/jetty/http/HttpFields$Mutable;",
+        "@@ -158,3 +158,3 @@\n",
+        "             0      11     1 this$1   Lorg/eclipse/jetty/rewrite/handler/RewriteLanguageRule$LanguageHandler;",
+        "-            0      11     2  arg0   Lorg/eclipse/jetty/http/HttpFields$Mutable;",
+        "+            0      11     2 fields   Lorg/eclipse/jetty/http/HttpFields$Mutable;",
+        " "
+      ]
+    },
+    {
+      "name": "org/eclipse/jetty/rewrite/handler/RewriteLanguageRule$LanguageHandler$2.class",
+      "instruction_and_signatures_match": true,
+      "difference": [
+        "--- \n",
+        "+++ \n",
+        "@@ -31,5 +31,5 @@\n",
+        "   #22 = Utf8               Lorg/eclipse/jetty/rewrite/handler/RewriteLanguageRule$LanguageHandler$2;",
+        "-  #23 = Utf8               arg0",
+        "+  #23 = Utf8               request",
+        "   #24 = Utf8               Lorg/eclipse/jetty/server/Request;",
+        "-  #25 = Utf8               arg1",
+        "+  #25 = Utf8               wrapped",
+        "   #26 = Utf8               Lorg/eclipse/jetty/server/Response;",
+        "@@ -89,4 +89,4 @@\n",
+        "             0      18     1 this$1   Lorg/eclipse/jetty/rewrite/handler/RewriteLanguageRule$LanguageHandler;",
+        "-            0      18     2  arg0   Lorg/eclipse/jetty/server/Request;",
+        "-            0      18     3  arg1   Lorg/eclipse/jetty/server/Response;",
+        "+            0      18     2 request   Lorg/eclipse/jetty/server/Request;",
+        "+            0      18     3 wrapped   Lorg/eclipse/jetty/server/Response;",
+        " "
+      ]
+    },
+    {
+      "name": "org/eclipse/jetty/compression/server/internal/CompressionResponse$1.class",
+      "instruction_and_signatures_match": true,
+      "difference": [
+        "--- \n",
+        "+++ \n",
+        "@@ -58,3 +58,3 @@\n",
+        "   #49 = Utf8               Lorg/eclipse/jetty/compression/server/internal/CompressionResponse$1;",
+        "-  #50 = Utf8               arg0",
+        "+  #50 = Utf8               fields",
+        "   #51 = Utf8               Lorg/eclipse/jetty/http/HttpFields$Mutable;",
+        "@@ -104,3 +104,3 @@\n",
+        "             0      11     1 this$0   Lorg/eclipse/jetty/compression/server/internal/CompressionResponse;",
+        "-            0      11     2  arg0   Lorg/eclipse/jetty/http/HttpFields$Mutable;",
+        "+            0      11     2 fields   Lorg/eclipse/jetty/http/HttpFields$Mutable;",
+        " "
+      ]
+    }
+  ],
+  "all_differing_instruction_and_signatures_match": true
+}

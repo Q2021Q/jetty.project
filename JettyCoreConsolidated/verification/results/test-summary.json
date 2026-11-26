@@ -1,0 +1,1563 @@
+{
+  "verify17": {
+    "groups": {
+      "jetty-alpn-java-server": {
+        "passed": 3
+      },
+      "jetty-compression-common": {
+        "passed": 1
+      },
+      "jetty-compression-gzip": {
+        "passed": 18
+      },
+      "jetty-compression-tests": {
+        "passed": 183,
+        "skipped": 1
+      },
+      "jetty-http": {
+        "passed": 4943,
+        "skipped": 2
+      },
+      "jetty-http2-common": {
+        "passed": 47
+      },
+      "jetty-http2-hpack": {
+        "passed": 52
+      },
+      "jetty-http2-tests": {
+        "passed": 273,
+        "skipped": 9,
+        "failure": 2
+      },
+      "jetty-io": {
+        "passed": 5188,
+        "skipped": 13
+      },
+      "jetty-rewrite": {
+        "passed": 207,
+        "skipped": 4
+      },
+      "jetty-security": {
+        "passed": 55,
+        "skipped": 1
+      },
+      "jetty-server": {
+        "passed": 2367,
+        "skipped": 52,
+        "error": 2,
+        "failure": 1
+      },
+      "jetty-test-client-transports": {
+        "passed": 819,
+        "skipped": 39,
+        "failure": 1,
+        "error": 1
+      },
+      "jetty-test-jmx": {
+        "passed": 4
+      },
+      "jetty-test-rfc": {
+        "passed": 47,
+        "skipped": 2
+      },
+      "jetty-util": {
+        "passed": 2878,
+        "skipped": 138,
+        "failure": 3
+      },
+      "test-integration": {
+        "error": 3,
+        "failure": 77,
+        "passed": 53
+      }
+    },
+    "total": {
+      "passed": 17138,
+      "skipped": 261,
+      "failure": 84,
+      "error": 6
+    },
+    "failures": [
+      {
+        "suite": "jetty-http2-tests",
+        "classname": "org.eclipse.jetty.http2.tests.ConcurrentRequestsTest",
+        "testcase": "testConcurrentGoodRequestsWithBadRequestsWithDifferentConnections",
+        "outcome": "failure",
+        "message": "\nExpected: an empty collection\n     but: <[java.lang.RuntimeException: oejh2f.ResetFrame@2035508a#13{no_error}]>",
+        "xml": "C:\\Users\\Kevin\\AppData\\Local\\Temp\\jcc-770f5e4\\verified17\\target\\surefire-reports\\jetty-http2-tests\\TEST-org.eclipse.jetty.http2.tests.ConcurrentRequestsTest.xml",
+        "status_in_original_baseline": "failure"
+      },
+      {
+        "suite": "jetty-http2-tests",
+        "classname": "org.eclipse.jetty.http2.tests.ConcurrentRequestsTest",
+        "testcase": "testConcurrentGoodRequestsWithBadRequestsWithSameConnection",
+        "outcome": "failure",
+        "message": "\nExpected: an empty collection\n     but: <[java.lang.RuntimeException: oejh2f.ResetFrame@1da54e3b#23{no_error}]>",
+        "xml": "C:\\Users\\Kevin\\AppData\\Local\\Temp\\jcc-770f5e4\\verified17\\target\\surefire-reports\\jetty-http2-tests\\TEST-org.eclipse.jetty.http2.tests.ConcurrentRequestsTest.xml",
+        "status_in_original_baseline": "failure"
+      },
+      {
+        "suite": "jetty-server",
+        "classname": "org.eclipse.jetty.server.handler.MinimumDataRateHandlerTest",
+        "testcase": "testMinimumDataWriteRateWithSingleLastWrite",
+        "outcome": "error",
+        "message": "Cannot invoke \"java.lang.Throwable.getMessage()\" because the return value of \"java.util.concurrent.atomic.AtomicReference.get()\" is null",
+        "xml": "C:\\Users\\Kevin\\AppData\\Local\\Temp\\jcc-770f5e4\\verified17\\target\\surefire-reports\\jetty-server\\TEST-org.eclipse.jetty.server.handler.MinimumDataRateHandlerTest.xml",
+        "status_in_original_baseline": "error"
+      },
+      {
+        "suite": "jetty-server",
+        "classname": "org.eclipse.jetty.server.LargeHeaderTest",
+        "testcase": "testLargeHeaderNewConnectionsConcurrent",
+        "outcome": "error",
+        "message": "",
+        "xml": "C:\\Users\\Kevin\\AppData\\Local\\Temp\\jcc-770f5e4\\verified17\\target\\surefire-reports\\jetty-server\\TEST-org.eclipse.jetty.server.LargeHeaderTest.xml",
+        "status_in_original_baseline": "passed"
+      },
+      {
+        "suite": "jetty-server",
+        "classname": "org.eclipse.jetty.server.ShutdownServiceTest",
+        "testcase": "testShutdownXml",
+        "outcome": "failure",
+        "message": "expected: <true> but was: <false>",
+        "xml": "C:\\Users\\Kevin\\AppData\\Local\\Temp\\jcc-770f5e4\\verified17\\target\\surefire-reports\\jetty-server\\TEST-org.eclipse.jetty.server.ShutdownServiceTest.xml",
+        "status_in_original_baseline": "passed"
+      },
+      {
+        "suite": "jetty-test-client-transports",
+        "classname": "org.eclipse.jetty.test.client.transport.FormTest",
+        "testcase": "testMaxFormContentSizeExceeded(TransportType, Integer, Integer, int)[8]",
+        "outcome": "failure",
+        "message": "expected: <413> but was: <0>",
+        "xml": "C:\\Users\\Kevin\\AppData\\Local\\Temp\\jcc-770f5e4\\verified17\\target\\surefire-reports\\jetty-test-client-transports\\TEST-org.eclipse.jetty.test.client.transport.FormTest.xml",
+        "status_in_original_baseline": "failure"
+      },
+      {
+        "suite": "jetty-test-client-transports",
+        "classname": "org.eclipse.jetty.test.client.transport.HttpClientStreamTest",
+        "testcase": "testDownloadWithFailure(TransportType)[3]",
+        "outcome": "error",
+        "message": "java.nio.channels.ClosedChannelException",
+        "xml": "C:\\Users\\Kevin\\AppData\\Local\\Temp\\jcc-770f5e4\\verified17\\target\\surefire-reports\\jetty-test-client-transports\\TEST-org.eclipse.jetty.test.client.transport.HttpClientStreamTest.xml",
+        "status_in_original_baseline": "passed"
+      },
+      {
+        "suite": "jetty-util",
+        "classname": "org.eclipse.jetty.util.resource.FileSystemResourceTest",
+        "testcase": "testUtf8Dir(WorkDir)",
+        "outcome": "failure",
+        "message": "Is Not Alias: C:\\Users\\Kevin\\AppData\\Local\\Temp\\jcc-770f5e4\\verified17\\target\\fixtures\\jetty-util\\target\\tests\\oejur.FileSystemResourceTest\\testUtf8Dir\\bãm\nExpected: isAlias() should return false\n     but: was <file:///C:/Users/Kevin/AppData/Local/Temp/jcc-770f5e4/verified17/target/fixtures/jetty-util/target/tests/oejur.FileSystemResourceTest/testUtf8Dir/bãm/>",
+        "xml": "C:\\Users\\Kevin\\AppData\\Local\\Temp\\jcc-770f5e4\\verified17\\target\\surefire-reports\\jetty-util\\TEST-org.eclipse.jetty.util.resource.FileSystemResourceTest.xml",
+        "status_in_original_baseline": "failure"
+      },
+      {
+        "suite": "jetty-util",
+        "classname": "org.eclipse.jetty.util.security.PasswordTest",
+        "testcase": "testCommandLineUsage",
+        "outcome": "failure",
+        "message": "Non-error exit code: Error: Could not find or load main class org.eclipse.jetty.util.security.Password\nCaused by: java.lang.ClassNotFoundException: org.eclipse.jetty.util.security.Password\nExpected: is <0>\n     but: was <1>",
+        "xml": "C:\\Users\\Kevin\\AppData\\Local\\Temp\\jcc-770f5e4\\verified17\\target\\surefire-reports\\jetty-util\\TEST-org.eclipse.jetty.util.security.PasswordTest.xml",
+        "status_in_original_baseline": "passed"
+      },
+      {
+        "suite": "jetty-util",
+        "classname": "org.eclipse.jetty.util.thread.QueuedThreadPoolTest",
+        "testcase": "testMaxStopTime",
+        "outcome": "failure",
+        "message": "expected: <true> but was: <false>",
+        "xml": "C:\\Users\\Kevin\\AppData\\Local\\Temp\\jcc-770f5e4\\verified17\\target\\surefire-reports\\jetty-util\\TEST-org.eclipse.jetty.util.thread.QueuedThreadPoolTest.xml",
+        "status_in_original_baseline": "failure"
+      },
+      {
+        "suite": "test-integration",
+        "classname": "org.eclipse.jetty.test.AliasCheckerMultipleResourceTest",
+        "testcase": "testCombinedResources",
+        "outcome": "error",
+        "message": "Does not exist: file:///C:/Users/Kevin/AppData/Local/Temp/jcc-770f5e4/verified17/target/test-classes/multipleResourceTest/webroot2",
+        "xml": "C:\\Users\\Kevin\\AppData\\Local\\Temp\\jcc-770f5e4\\verified17\\target\\surefire-reports\\test-integration\\TEST-org.eclipse.jetty.test.AliasCheckerMultipleResourceTest.xml",
+        "status_in_original_baseline": "passed"
+      },
+      {
+        "suite": "test-integration",
+        "classname": "org.eclipse.jetty.test.AliasCheckerMultipleResourceTest",
+        "testcase": "testJarResource",
+        "outcome": "error",
+        "message": "",
+        "xml": "C:\\Users\\Kevin\\AppData\\Local\\Temp\\jcc-770f5e4\\verified17\\target\\surefire-reports\\test-integration\\TEST-org.eclipse.jetty.test.AliasCheckerMultipleResourceTest.xml",
+        "status_in_original_baseline": "passed"
+      },
+      {
+        "suite": "test-integration",
+        "classname": "org.eclipse.jetty.test.AliasCheckerMultipleResourceTest",
+        "testcase": "testMultipleResourceBases",
+        "outcome": "error",
+        "message": "Base Resource is not valid: file:///C:/Users/Kevin/AppData/Local/Temp/jcc-770f5e4/verified17/target/test-classes/webroot",
+        "xml": "C:\\Users\\Kevin\\AppData\\Local\\Temp\\jcc-770f5e4\\verified17\\target\\surefire-reports\\test-integration\\TEST-org.eclipse.jetty.test.AliasCheckerMultipleResourceTest.xml",
+        "status_in_original_baseline": "passed"
+      },
+      {
+        "suite": "test-integration",
+        "classname": "org.eclipse.jetty.test.AliasCheckerSymlinkTest",
+        "testcase": "test(Function, String, int, String)[1]",
+        "outcome": "failure",
+        "message": "\nExpected: is <200>\n     but: was <404>",
+        "xml": "C:\\Users\\Kevin\\AppData\\Local\\Temp\\jcc-770f5e4\\verified17\\target\\surefire-reports\\test-integration\\TEST-org.eclipse.jetty.test.AliasCheckerSymlinkTest.xml",
+        "status_in_original_baseline": "passed"
+      },
+      {
+        "suite": "test-integration",
+        "classname": "org.eclipse.jetty.test.AliasCheckerSymlinkTest",
+        "testcase": "test(Function, String, int, String)[3]",
+        "outcome": "failure",
+        "message": "\nExpected: is <200>\n     but: was <404>",
+        "xml": "C:\\Users\\Kevin\\AppData\\Local\\Temp\\jcc-770f5e4\\verified17\\target\\surefire-reports\\test-integration\\TEST-org.eclipse.jetty.test.AliasCheckerSymlinkTest.xml",
+        "status_in_original_baseline": "passed"
+      },
+      {
+        "suite": "test-integration",
+        "classname": "org.eclipse.jetty.test.AliasCheckerSymlinkTest",
+        "testcase": "test(Function, String, int, String)[4]",
+        "outcome": "failure",
+        "message": "\nExpected: is <200>\n     but: was <404>",
+        "xml": "C:\\Users\\Kevin\\AppData\\Local\\Temp\\jcc-770f5e4\\verified17\\target\\surefire-reports\\test-integration\\TEST-org.eclipse.jetty.test.AliasCheckerSymlinkTest.xml",
+        "status_in_original_baseline": "passed"
+      },
+      {
+        "suite": "test-integration",
+        "classname": "org.eclipse.jetty.test.AliasCheckerSymlinkTest",
+        "testcase": "test(Function, String, int, String)[8]",
+        "outcome": "failure",
+        "message": "\nExpected: is <200>\n     but: was <404>",
+        "xml": "C:\\Users\\Kevin\\AppData\\Local\\Temp\\jcc-770f5e4\\verified17\\target\\surefire-reports\\test-integration\\TEST-org.eclipse.jetty.test.AliasCheckerSymlinkTest.xml",
+        "status_in_original_baseline": "passed"
+      },
+      {
+        "suite": "test-integration",
+        "classname": "org.eclipse.jetty.test.AliasCheckerSymlinkTest",
+        "testcase": "test(Function, String, int, String)[9]",
+        "outcome": "failure",
+        "message": "\nExpected: is <200>\n     but: was <404>",
+        "xml": "C:\\Users\\Kevin\\AppData\\Local\\Temp\\jcc-770f5e4\\verified17\\target\\surefire-reports\\test-integration\\TEST-org.eclipse.jetty.test.AliasCheckerSymlinkTest.xml",
+        "status_in_original_baseline": "passed"
+      },
+      {
+        "suite": "test-integration",
+        "classname": "org.eclipse.jetty.test.AliasCheckerSymlinkTest",
+        "testcase": "test(Function, String, int, String)[10]",
+        "outcome": "failure",
+        "message": "\nExpected: is <200>\n     but: was <404>",
+        "xml": "C:\\Users\\Kevin\\AppData\\Local\\Temp\\jcc-770f5e4\\verified17\\target\\surefire-reports\\test-integration\\TEST-org.eclipse.jetty.test.AliasCheckerSymlinkTest.xml",
+        "status_in_original_baseline": "passed"
+      },
+      {
+        "suite": "test-integration",
+        "classname": "org.eclipse.jetty.test.AliasCheckerSymlinkTest",
+        "testcase": "test(Function, String, int, String)[11]",
+        "outcome": "failure",
+        "message": "\nExpected: is <200>\n     but: was <404>",
+        "xml": "C:\\Users\\Kevin\\AppData\\Local\\Temp\\jcc-770f5e4\\verified17\\target\\surefire-reports\\test-integration\\TEST-org.eclipse.jetty.test.AliasCheckerSymlinkTest.xml",
+        "status_in_original_baseline": "passed"
+      },
+      {
+        "suite": "test-integration",
+        "classname": "org.eclipse.jetty.test.AliasCheckerSymlinkTest",
+        "testcase": "test(Function, String, int, String)[12]",
+        "outcome": "failure",
+        "message": "\nExpected: is <200>\n     but: was <404>",
+        "xml": "C:\\Users\\Kevin\\AppData\\Local\\Temp\\jcc-770f5e4\\verified17\\target\\surefire-reports\\test-integration\\TEST-org.eclipse.jetty.test.AliasCheckerSymlinkTest.xml",
+        "status_in_original_baseline": "passed"
+      },
+      {
+        "suite": "test-integration",
+        "classname": "org.eclipse.jetty.test.AliasCheckerSymlinkTest",
+        "testcase": "test(Function, String, int, String)[13]",
+        "outcome": "failure",
+        "message": "\nExpected: is <200>\n     but: was <404>",
+        "xml": "C:\\Users\\Kevin\\AppData\\Local\\Temp\\jcc-770f5e4\\verified17\\target\\surefire-reports\\test-integration\\TEST-org.eclipse.jetty.test.AliasCheckerSymlinkTest.xml",
+        "status_in_original_baseline": "passed"
+      },
+      {
+        "suite": "test-integration",
+        "classname": "org.eclipse.jetty.test.AliasCheckerSymlinkTest",
+        "testcase": "test(Function, String, int, String)[14]",
+        "outcome": "failure",
+        "message": "\nExpected: is <200>\n     but: was <404>",
+        "xml": "C:\\Users\\Kevin\\AppData\\Local\\Temp\\jcc-770f5e4\\verified17\\target\\surefire-reports\\test-integration\\TEST-org.eclipse.jetty.test.AliasCheckerSymlinkTest.xml",
+        "status_in_original_baseline": "passed"
+      },
+      {
+        "suite": "test-integration",
+        "classname": "org.eclipse.jetty.test.AliasCheckerSymlinkTest",
+        "testcase": "test(Function, String, int, String)[15]",
+        "outcome": "failure",
+        "message": "\nExpected: is <200>\n     but: was <404>",
+        "xml": "C:\\Users\\Kevin\\AppData\\Local\\Temp\\jcc-770f5e4\\verified17\\target\\surefire-reports\\test-integration\\TEST-org.eclipse.jetty.test.AliasCheckerSymlinkTest.xml",
+        "status_in_original_baseline": "passed"
+      },
+      {
+        "suite": "test-integration",
+        "classname": "org.eclipse.jetty.test.AliasCheckerSymlinkTest",
+        "testcase": "test(Function, String, int, String)[16]",
+        "outcome": "failure",
+        "message": "\nExpected: is <200>\n     but: was <404>",
+        "xml": "C:\\Users\\Kevin\\AppData\\Local\\Temp\\jcc-770f5e4\\verified17\\target\\surefire-reports\\test-integration\\TEST-org.eclipse.jetty.test.AliasCheckerSymlinkTest.xml",
+        "status_in_original_baseline": "passed"
+      },
+      {
+        "suite": "test-integration",
+        "classname": "org.eclipse.jetty.test.AliasCheckerSymlinkTest",
+        "testcase": "test(Function, String, int, String)[17]",
+        "outcome": "failure",
+        "message": "\nExpected: is <200>\n     but: was <404>",
+        "xml": "C:\\Users\\Kevin\\AppData\\Local\\Temp\\jcc-770f5e4\\verified17\\target\\surefire-reports\\test-integration\\TEST-org.eclipse.jetty.test.AliasCheckerSymlinkTest.xml",
+        "status_in_original_baseline": "passed"
+      },
+      {
+        "suite": "test-integration",
+        "classname": "org.eclipse.jetty.test.AliasCheckerSymlinkTest",
+        "testcase": "test(Function, String, int, String)[18]",
+        "outcome": "failure",
+        "message": "\nExpected: is <200>\n     but: was <404>",
+        "xml": "C:\\Users\\Kevin\\AppData\\Local\\Temp\\jcc-770f5e4\\verified17\\target\\surefire-reports\\test-integration\\TEST-org.eclipse.jetty.test.AliasCheckerSymlinkTest.xml",
+        "status_in_original_baseline": "passed"
+      },
+      {
+        "suite": "test-integration",
+        "classname": "org.eclipse.jetty.test.AliasCheckerSymlinkTest",
+        "testcase": "test(Function, String, int, String)[19]",
+        "outcome": "failure",
+        "message": "\nExpected: is <200>\n     but: was <404>",
+        "xml": "C:\\Users\\Kevin\\AppData\\Local\\Temp\\jcc-770f5e4\\verified17\\target\\surefire-reports\\test-integration\\TEST-org.eclipse.jetty.test.AliasCheckerSymlinkTest.xml",
+        "status_in_original_baseline": "passed"
+      },
+      {
+        "suite": "test-integration",
+        "classname": "org.eclipse.jetty.test.AliasCheckerSymlinkTest",
+        "testcase": "test(Function, String, int, String)[20]",
+        "outcome": "failure",
+        "message": "\nExpected: is <200>\n     but: was <404>",
+        "xml": "C:\\Users\\Kevin\\AppData\\Local\\Temp\\jcc-770f5e4\\verified17\\target\\surefire-reports\\test-integration\\TEST-org.eclipse.jetty.test.AliasCheckerSymlinkTest.xml",
+        "status_in_original_baseline": "passed"
+      },
+      {
+        "suite": "test-integration",
+        "classname": "org.eclipse.jetty.test.AliasCheckerSymlinkTest",
+        "testcase": "test(Function, String, int, String)[21]",
+        "outcome": "failure",
+        "message": "\nExpected: is <200>\n     but: was <404>",
+        "xml": "C:\\Users\\Kevin\\AppData\\Local\\Temp\\jcc-770f5e4\\verified17\\target\\surefire-reports\\test-integration\\TEST-org.eclipse.jetty.test.AliasCheckerSymlinkTest.xml",
+        "status_in_original_baseline": "passed"
+      },
+      {
+        "suite": "test-integration",
+        "classname": "org.eclipse.jetty.test.AliasCheckerSymlinkTest",
+        "testcase": "test(Function, String, int, String)[30]",
+        "outcome": "failure",
+        "message": "\nExpected: is <200>\n     but: was <404>",
+        "xml": "C:\\Users\\Kevin\\AppData\\Local\\Temp\\jcc-770f5e4\\verified17\\target\\surefire-reports\\test-integration\\TEST-org.eclipse.jetty.test.AliasCheckerSymlinkTest.xml",
+        "status_in_original_baseline": "passed"
+      },
+      {
+        "suite": "test-integration",
+        "classname": "org.eclipse.jetty.test.AliasCheckerSymlinkTest",
+        "testcase": "testCombinedBaseResource(Function, String, int, String)[1]",
+        "outcome": "failure",
+        "message": "\nExpected: is <200>\n     but: was <404>",
+        "xml": "C:\\Users\\Kevin\\AppData\\Local\\Temp\\jcc-770f5e4\\verified17\\target\\surefire-reports\\test-integration\\TEST-org.eclipse.jetty.test.AliasCheckerSymlinkTest.xml",
+        "status_in_original_baseline": "passed"
+      },
+      {
+        "suite": "test-integration",
+        "classname": "org.eclipse.jetty.test.AliasCheckerSymlinkTest",
+        "testcase": "testCombinedBaseResource(Function, String, int, String)[3]",
+        "outcome": "failure",
+        "message": "\nExpected: is <200>\n     but: was <404>",
+        "xml": "C:\\Users\\Kevin\\AppData\\Local\\Temp\\jcc-770f5e4\\verified17\\target\\surefire-reports\\test-integration\\TEST-org.eclipse.jetty.test.AliasCheckerSymlinkTest.xml",
+        "status_in_original_baseline": "passed"
+      },
+      {
+        "suite": "test-integration",
+        "classname": "org.eclipse.jetty.test.AliasCheckerSymlinkTest",
+        "testcase": "testCombinedBaseResource(Function, String, int, String)[4]",
+        "outcome": "failure",
+        "message": "\nExpected: is <200>\n     but: was <404>",
+        "xml": "C:\\Users\\Kevin\\AppData\\Local\\Temp\\jcc-770f5e4\\verified17\\target\\surefire-reports\\test-integration\\TEST-org.eclipse.jetty.test.AliasCheckerSymlinkTest.xml",
+        "status_in_original_baseline": "passed"
+      },
+      {
+        "suite": "test-integration",
+        "classname": "org.eclipse.jetty.test.AliasCheckerSymlinkTest",
+        "testcase": "testCombinedBaseResource(Function, String, int, String)[8]",
+        "outcome": "failure",
+        "message": "\nExpected: is <200>\n     but: was <404>",
+        "xml": "C:\\Users\\Kevin\\AppData\\Local\\Temp\\jcc-770f5e4\\verified17\\target\\surefire-reports\\test-integration\\TEST-org.eclipse.jetty.test.AliasCheckerSymlinkTest.xml",
+        "status_in_original_baseline": "passed"
+      },
+      {
+        "suite": "test-integration",
+        "classname": "org.eclipse.jetty.test.AliasCheckerSymlinkTest",
+        "testcase": "testCombinedBaseResource(Function, String, int, String)[9]",
+        "outcome": "failure",
+        "message": "\nExpected: is <200>\n     but: was <404>",
+        "xml": "C:\\Users\\Kevin\\AppData\\Local\\Temp\\jcc-770f5e4\\verified17\\target\\surefire-reports\\test-integration\\TEST-org.eclipse.jetty.test.AliasCheckerSymlinkTest.xml",
+        "status_in_original_baseline": "passed"
+      },
+      {
+        "suite": "test-integration",
+        "classname": "org.eclipse.jetty.test.AliasCheckerSymlinkTest",
+        "testcase": "testCombinedBaseResource(Function, String, int, String)[10]",
+        "outcome": "failure",
+        "message": "\nExpected: is <200>\n     but: was <404>",
+        "xml": "C:\\Users\\Kevin\\AppData\\Local\\Temp\\jcc-770f5e4\\verified17\\target\\surefire-reports\\test-integration\\TEST-org.eclipse.jetty.test.AliasCheckerSymlinkTest.xml",
+        "status_in_original_baseline": "passed"
+      },
+      {
+        "suite": "test-integration",
+        "classname": "org.eclipse.jetty.test.AliasCheckerSymlinkTest",
+        "testcase": "testCombinedBaseResource(Function, String, int, String)[11]",
+        "outcome": "failure",
+        "message": "\nExpected: is <200>\n     but: was <404>",
+        "xml": "C:\\Users\\Kevin\\AppData\\Local\\Temp\\jcc-770f5e4\\verified17\\target\\surefire-reports\\test-integration\\TEST-org.eclipse.jetty.test.AliasCheckerSymlinkTest.xml",
+        "status_in_original_baseline": "passed"
+      },
+      {
+        "suite": "test-integration",
+        "classname": "org.eclipse.jetty.test.AliasCheckerSymlinkTest",
+        "testcase": "testCombinedBaseResource(Function, String, int, String)[12]",
+        "outcome": "failure",
+        "message": "\nExpected: is <200>\n     but: was <404>",
+        "xml": "C:\\Users\\Kevin\\AppData\\Local\\Temp\\jcc-770f5e4\\verified17\\target\\surefire-reports\\test-integration\\TEST-org.eclipse.jetty.test.AliasCheckerSymlinkTest.xml",
+        "status_in_original_baseline": "passed"
+      },
+      {
+        "suite": "test-integration",
+        "classname": "org.eclipse.jetty.test.AliasCheckerSymlinkTest",
+        "testcase": "testCombinedBaseResource(Function, String, int, String)[13]",
+        "outcome": "failure",
+        "message": "\nExpected: is <200>\n     but: was <404>",
+        "xml": "C:\\Users\\Kevin\\AppData\\Local\\Temp\\jcc-770f5e4\\verified17\\target\\surefire-reports\\test-integration\\TEST-org.eclipse.jetty.test.AliasCheckerSymlinkTest.xml",
+        "status_in_original_baseline": "passed"
+      },
+      {
+        "suite": "test-integration",
+        "classname": "org.eclipse.jetty.test.AliasCheckerSymlinkTest",
+        "testcase": "testCombinedBaseResource(Function, String, int, String)[14]",
+        "outcome": "failure",
+        "message": "\nExpected: is <200>\n     but: was <404>",
+        "xml": "C:\\Users\\Kevin\\AppData\\Local\\Temp\\jcc-770f5e4\\verified17\\target\\surefire-reports\\test-integration\\TEST-org.eclipse.jetty.test.AliasCheckerSymlinkTest.xml",
+        "status_in_original_baseline": "passed"
+      },
+      {
+        "suite": "test-integration",
+        "classname": "org.eclipse.jetty.test.AliasCheckerSymlinkTest",
+        "testcase": "testCombinedBaseResource(Function, String, int, String)[15]",
+        "outcome": "failure",
+        "message": "\nExpected: is <200>\n     but: was <404>",
+        "xml": "C:\\Users\\Kevin\\AppData\\Local\\Temp\\jcc-770f5e4\\verified17\\target\\surefire-reports\\test-integration\\TEST-org.eclipse.jetty.test.AliasCheckerSymlinkTest.xml",
+        "status_in_original_baseline": "passed"
+      },
+      {
+        "suite": "test-integration",
+        "classname": "org.eclipse.jetty.test.AliasCheckerSymlinkTest",
+        "testcase": "testCombinedBaseResource(Function, String, int, String)[16]",
+        "outcome": "failure",
+        "message": "\nExpected: is <200>\n     but: was <404>",
+        "xml": "C:\\Users\\Kevin\\AppData\\Local\\Temp\\jcc-770f5e4\\verified17\\target\\surefire-reports\\test-integration\\TEST-org.eclipse.jetty.test.AliasCheckerSymlinkTest.xml",
+        "status_in_original_baseline": "passed"
+      },
+      {
+        "suite": "test-integration",
+        "classname": "org.eclipse.jetty.test.AliasCheckerSymlinkTest",
+        "testcase": "testCombinedBaseResource(Function, String, int, String)[17]",
+        "outcome": "failure",
+        "message": "\nExpected: is <200>\n     but: was <404>",
+        "xml": "C:\\Users\\Kevin\\AppData\\Local\\Temp\\jcc-770f5e4\\verified17\\target\\surefire-reports\\test-integration\\TEST-org.eclipse.jetty.test.AliasCheckerSymlinkTest.xml",
+        "status_in_original_baseline": "passed"
+      },
+      {
+        "suite": "test-integration",
+        "classname": "org.eclipse.jetty.test.AliasCheckerSymlinkTest",
+        "testcase": "testCombinedBaseResource(Function, String, int, String)[18]",
+        "outcome": "failure",
+        "message": "\nExpected: is <200>\n     but: was <404>",
+        "xml": "C:\\Users\\Kevin\\AppData\\Local\\Temp\\jcc-770f5e4\\verified17\\target\\surefire-reports\\test-integration\\TEST-org.eclipse.jetty.test.AliasCheckerSymlinkTest.xml",
+        "status_in_original_baseline": "passed"
+      },
+      {
+        "suite": "test-integration",
+        "classname": "org.eclipse.jetty.test.AliasCheckerSymlinkTest",
+        "testcase": "testCombinedBaseResource(Function, String, int, String)[19]",
+        "outcome": "failure",
+        "message": "\nExpected: is <200>\n     but: was <404>",
+        "xml": "C:\\Users\\Kevin\\AppData\\Local\\Temp\\jcc-770f5e4\\verified17\\target\\surefire-reports\\test-integration\\TEST-org.eclipse.jetty.test.AliasCheckerSymlinkTest.xml",
+        "status_in_original_baseline": "passed"
+      },
+      {
+        "suite": "test-integration",
+        "classname": "org.eclipse.jetty.test.AliasCheckerSymlinkTest",
+        "testcase": "testCombinedBaseResource(Function, String, int, String)[20]",
+        "outcome": "failure",
+        "message": "\nExpected: is <200>\n     but: was <404>",
+        "xml": "C:\\Users\\Kevin\\AppData\\Local\\Temp\\jcc-770f5e4\\verified17\\target\\surefire-reports\\test-integration\\TEST-org.eclipse.jetty.test.AliasCheckerSymlinkTest.xml",
+        "status_in_original_baseline": "passed"
+      },
+      {
+        "suite": "test-integration",
+        "classname": "org.eclipse.jetty.test.AliasCheckerSymlinkTest",
+        "testcase": "testCombinedBaseResource(Function, String, int, String)[21]",
+        "outcome": "failure",
+        "message": "\nExpected: is <200>\n     but: was <404>",
+        "xml": "C:\\Users\\Kevin\\AppData\\Local\\Temp\\jcc-770f5e4\\verified17\\target\\surefire-reports\\test-integration\\TEST-org.eclipse.jetty.test.AliasCheckerSymlinkTest.xml",
+        "status_in_original_baseline": "passed"
+      },
+      {
+        "suite": "test-integration",
+        "classname": "org.eclipse.jetty.test.AliasCheckerSymlinkTest",
+        "testcase": "testCombinedBaseResource(Function, String, int, String)[30]",
+        "outcome": "failure",
+        "message": "\nExpected: is <200>\n     but: was <404>",
+        "xml": "C:\\Users\\Kevin\\AppData\\Local\\Temp\\jcc-770f5e4\\verified17\\target\\surefire-reports\\test-integration\\TEST-org.eclipse.jetty.test.AliasCheckerSymlinkTest.xml",
+        "status_in_original_baseline": "passed"
+      },
+      {
+        "suite": "test-integration",
+        "classname": "org.eclipse.jetty.test.AliasCheckerSymlinkTest",
+        "testcase": "testCombinedBaseResource(Function, String, int, String)[31]",
+        "outcome": "failure",
+        "message": "\nExpected: is <200>\n     but: was <404>",
+        "xml": "C:\\Users\\Kevin\\AppData\\Local\\Temp\\jcc-770f5e4\\verified17\\target\\surefire-reports\\test-integration\\TEST-org.eclipse.jetty.test.AliasCheckerSymlinkTest.xml",
+        "status_in_original_baseline": "passed"
+      },
+      {
+        "suite": "test-integration",
+        "classname": "org.eclipse.jetty.test.AliasCheckerSymlinkTest",
+        "testcase": "testCombinedBaseResource(Function, String, int, String)[32]",
+        "outcome": "failure",
+        "message": "\nExpected: is <200>\n     but: was <404>",
+        "xml": "C:\\Users\\Kevin\\AppData\\Local\\Temp\\jcc-770f5e4\\verified17\\target\\surefire-reports\\test-integration\\TEST-org.eclipse.jetty.test.AliasCheckerSymlinkTest.xml",
+        "status_in_original_baseline": "passed"
+      },
+      {
+        "suite": "test-integration",
+        "classname": "org.eclipse.jetty.test.AliasCheckerSymlinkTest",
+        "testcase": "testCombinedBaseResource(Function, String, int, String)[34]",
+        "outcome": "failure",
+        "message": "\nExpected: is <200>\n     but: was <404>",
+        "xml": "C:\\Users\\Kevin\\AppData\\Local\\Temp\\jcc-770f5e4\\verified17\\target\\surefire-reports\\test-integration\\TEST-org.eclipse.jetty.test.AliasCheckerSymlinkTest.xml",
+        "status_in_original_baseline": "passed"
+      },
+      {
+        "suite": "test-integration",
+        "classname": "org.eclipse.jetty.test.AliasCheckerSymlinkTest",
+        "testcase": "testCombinedBaseResource(Function, String, int, String)[35]",
+        "outcome": "failure",
+        "message": "\nExpected: is <200>\n     but: was <404>",
+        "xml": "C:\\Users\\Kevin\\AppData\\Local\\Temp\\jcc-770f5e4\\verified17\\target\\surefire-reports\\test-integration\\TEST-org.eclipse.jetty.test.AliasCheckerSymlinkTest.xml",
+        "status_in_original_baseline": "passed"
+      },
+      {
+        "suite": "test-integration",
+        "classname": "org.eclipse.jetty.test.AliasCheckerSymlinkTest",
+        "testcase": "testCombinedBaseResource(Function, String, int, String)[36]",
+        "outcome": "failure",
+        "message": "\nExpected: is <200>\n     but: was <404>",
+        "xml": "C:\\Users\\Kevin\\AppData\\Local\\Temp\\jcc-770f5e4\\verified17\\target\\surefire-reports\\test-integration\\TEST-org.eclipse.jetty.test.AliasCheckerSymlinkTest.xml",
+        "status_in_original_baseline": "passed"
+      },
+      {
+        "suite": "test-integration",
+        "classname": "org.eclipse.jetty.test.AliasCheckerSymlinkTest",
+        "testcase": "testCombinedBaseResource(Function, String, int, String)[37]",
+        "outcome": "failure",
+        "message": "\nExpected: is <200>\n     but: was <404>",
+        "xml": "C:\\Users\\Kevin\\AppData\\Local\\Temp\\jcc-770f5e4\\verified17\\target\\surefire-reports\\test-integration\\TEST-org.eclipse.jetty.test.AliasCheckerSymlinkTest.xml",
+        "status_in_original_baseline": "passed"
+      },
+      {
+        "suite": "test-integration",
+        "classname": "org.eclipse.jetty.test.AliasCheckerSymlinkTest",
+        "testcase": "testCombinedBaseResource(Function, String, int, String)[40]",
+        "outcome": "failure",
+        "message": "\nExpected: is <200>\n     but: was <404>",
+        "xml": "C:\\Users\\Kevin\\AppData\\Local\\Temp\\jcc-770f5e4\\verified17\\target\\surefire-reports\\test-integration\\TEST-org.eclipse.jetty.test.AliasCheckerSymlinkTest.xml",
+        "status_in_original_baseline": "passed"
+      },
+      {
+        "suite": "test-integration",
+        "classname": "org.eclipse.jetty.test.AliasCheckerSymlinkTest",
+        "testcase": "testCombinedBaseResource(Function, String, int, String)[41]",
+        "outcome": "failure",
+        "message": "\nExpected: is <200>\n     but: was <404>",
+        "xml": "C:\\Users\\Kevin\\AppData\\Local\\Temp\\jcc-770f5e4\\verified17\\target\\surefire-reports\\test-integration\\TEST-org.eclipse.jetty.test.AliasCheckerSymlinkTest.xml",
+        "status_in_original_baseline": "passed"
+      },
+      {
+        "suite": "test-integration",
+        "classname": "org.eclipse.jetty.test.AliasCheckerSymlinkTest",
+        "testcase": "testCombinedBaseResource(Function, String, int, String)[42]",
+        "outcome": "failure",
+        "message": "\nExpected: is <200>\n     but: was <404>",
+        "xml": "C:\\Users\\Kevin\\AppData\\Local\\Temp\\jcc-770f5e4\\verified17\\target\\surefire-reports\\test-integration\\TEST-org.eclipse.jetty.test.AliasCheckerSymlinkTest.xml",
+        "status_in_original_baseline": "passed"
+      },
+      {
+        "suite": "test-integration",
+        "classname": "org.eclipse.jetty.test.AliasCheckerSymlinkTest",
+        "testcase": "testCombinedBaseResource(Function, String, int, String)[43]",
+        "outcome": "failure",
+        "message": "\nExpected: is <200>\n     but: was <404>",
+        "xml": "C:\\Users\\Kevin\\AppData\\Local\\Temp\\jcc-770f5e4\\verified17\\target\\surefire-reports\\test-integration\\TEST-org.eclipse.jetty.test.AliasCheckerSymlinkTest.xml",
+        "status_in_original_baseline": "passed"
+      },
+      {
+        "suite": "test-integration",
+        "classname": "org.eclipse.jetty.test.AliasCheckerSymlinkTest",
+        "testcase": "testCombinedResource(Function, String, int, String)[1]",
+        "outcome": "failure",
+        "message": "\nExpected: is <200>\n     but: was <404>",
+        "xml": "C:\\Users\\Kevin\\AppData\\Local\\Temp\\jcc-770f5e4\\verified17\\target\\surefire-reports\\test-integration\\TEST-org.eclipse.jetty.test.AliasCheckerSymlinkTest.xml",
+        "status_in_original_baseline": "passed"
+      },
+      {
+        "suite": "test-integration",
+        "classname": "org.eclipse.jetty.test.AliasCheckerSymlinkTest",
+        "testcase": "testCombinedResource(Function, String, int, String)[3]",
+        "outcome": "failure",
+        "message": "\nExpected: is <200>\n     but: was <404>",
+        "xml": "C:\\Users\\Kevin\\AppData\\Local\\Temp\\jcc-770f5e4\\verified17\\target\\surefire-reports\\test-integration\\TEST-org.eclipse.jetty.test.AliasCheckerSymlinkTest.xml",
+        "status_in_original_baseline": "passed"
+      },
+      {
+        "suite": "test-integration",
+        "classname": "org.eclipse.jetty.test.AliasCheckerSymlinkTest",
+        "testcase": "testCombinedResource(Function, String, int, String)[4]",
+        "outcome": "failure",
+        "message": "\nExpected: is <200>\n     but: was <404>",
+        "xml": "C:\\Users\\Kevin\\AppData\\Local\\Temp\\jcc-770f5e4\\verified17\\target\\surefire-reports\\test-integration\\TEST-org.eclipse.jetty.test.AliasCheckerSymlinkTest.xml",
+        "status_in_original_baseline": "passed"
+      },
+      {
+        "suite": "test-integration",
+        "classname": "org.eclipse.jetty.test.AliasCheckerSymlinkTest",
+        "testcase": "testCombinedResource(Function, String, int, String)[8]",
+        "outcome": "failure",
+        "message": "\nExpected: is <200>\n     but: was <404>",
+        "xml": "C:\\Users\\Kevin\\AppData\\Local\\Temp\\jcc-770f5e4\\verified17\\target\\surefire-reports\\test-integration\\TEST-org.eclipse.jetty.test.AliasCheckerSymlinkTest.xml",
+        "status_in_original_baseline": "passed"
+      },
+      {
+        "suite": "test-integration",
+        "classname": "org.eclipse.jetty.test.AliasCheckerSymlinkTest",
+        "testcase": "testCombinedResource(Function, String, int, String)[9]",
+        "outcome": "failure",
+        "message": "\nExpected: is <200>\n     but: was <404>",
+        "xml": "C:\\Users\\Kevin\\AppData\\Local\\Temp\\jcc-770f5e4\\verified17\\target\\surefire-reports\\test-integration\\TEST-org.eclipse.jetty.test.AliasCheckerSymlinkTest.xml",
+        "status_in_original_baseline": "passed"
+      },
+      {
+        "suite": "test-integration",
+        "classname": "org.eclipse.jetty.test.AliasCheckerSymlinkTest",
+        "testcase": "testCombinedResource(Function, String, int, String)[10]",
+        "outcome": "failure",
+        "message": "\nExpected: is <200>\n     but: was <404>",
+        "xml": "C:\\Users\\Kevin\\AppData\\Local\\Temp\\jcc-770f5e4\\verified17\\target\\surefire-reports\\test-integration\\TEST-org.eclipse.jetty.test.AliasCheckerSymlinkTest.xml",
+        "status_in_original_baseline": "passed"
+      },
+      {
+        "suite": "test-integration",
+        "classname": "org.eclipse.jetty.test.AliasCheckerSymlinkTest",
+        "testcase": "testCombinedResource(Function, String, int, String)[11]",
+        "outcome": "failure",
+        "message": "\nExpected: is <200>\n     but: was <404>",
+        "xml": "C:\\Users\\Kevin\\AppData\\Local\\Temp\\jcc-770f5e4\\verified17\\target\\surefire-reports\\test-integration\\TEST-org.eclipse.jetty.test.AliasCheckerSymlinkTest.xml",
+        "status_in_original_baseline": "passed"
+      },
+      {
+        "suite": "test-integration",
+        "classname": "org.eclipse.jetty.test.AliasCheckerSymlinkTest",
+        "testcase": "testCombinedResource(Function, String, int, String)[12]",
+        "outcome": "failure",
+        "message": "\nExpected: is <200>\n     but: was <404>",
+        "xml": "C:\\Users\\Kevin\\AppData\\Local\\Temp\\jcc-770f5e4\\verified17\\target\\surefire-reports\\test-integration\\TEST-org.eclipse.jetty.test.AliasCheckerSymlinkTest.xml",
+        "status_in_original_baseline": "passed"
+      },
+      {
+        "suite": "test-integration",
+        "classname": "org.eclipse.jetty.test.AliasCheckerSymlinkTest",
+        "testcase": "testCombinedResource(Function, String, int, String)[13]",
+        "outcome": "failure",
+        "message": "\nExpected: is <200>\n     but: was <404>",
+        "xml": "C:\\Users\\Kevin\\AppData\\Local\\Temp\\jcc-770f5e4\\verified17\\target\\surefire-reports\\test-integration\\TEST-org.eclipse.jetty.test.AliasCheckerSymlinkTest.xml",
+        "status_in_original_baseline": "passed"
+      },
+      {
+        "suite": "test-integration",
+        "classname": "org.eclipse.jetty.test.AliasCheckerSymlinkTest",
+        "testcase": "testCombinedResource(Function, String, int, String)[14]",
+        "outcome": "failure",
+        "message": "\nExpected: is <200>\n     but: was <404>",
+        "xml": "C:\\Users\\Kevin\\AppData\\Local\\Temp\\jcc-770f5e4\\verified17\\target\\surefire-reports\\test-integration\\TEST-org.eclipse.jetty.test.AliasCheckerSymlinkTest.xml",
+        "status_in_original_baseline": "passed"
+      },
+      {
+        "suite": "test-integration",
+        "classname": "org.eclipse.jetty.test.AliasCheckerSymlinkTest",
+        "testcase": "testCombinedResource(Function, String, int, String)[15]",
+        "outcome": "failure",
+        "message": "\nExpected: is <200>\n     but: was <404>",
+        "xml": "C:\\Users\\Kevin\\AppData\\Local\\Temp\\jcc-770f5e4\\verified17\\target\\surefire-reports\\test-integration\\TEST-org.eclipse.jetty.test.AliasCheckerSymlinkTest.xml",
+        "status_in_original_baseline": "passed"
+      },
+      {
+        "suite": "test-integration",
+        "classname": "org.eclipse.jetty.test.AliasCheckerSymlinkTest",
+        "testcase": "testCombinedResource(Function, String, int, String)[16]",
+        "outcome": "failure",
+        "message": "\nExpected: is <200>\n     but: was <404>",
+        "xml": "C:\\Users\\Kevin\\AppData\\Local\\Temp\\jcc-770f5e4\\verified17\\target\\surefire-reports\\test-integration\\TEST-org.eclipse.jetty.test.AliasCheckerSymlinkTest.xml",
+        "status_in_original_baseline": "passed"
+      },
+      {
+        "suite": "test-integration",
+        "classname": "org.eclipse.jetty.test.AliasCheckerSymlinkTest",
+        "testcase": "testCombinedResource(Function, String, int, String)[17]",
+        "outcome": "failure",
+        "message": "\nExpected: is <200>\n     but: was <404>",
+        "xml": "C:\\Users\\Kevin\\AppData\\Local\\Temp\\jcc-770f5e4\\verified17\\target\\surefire-reports\\test-integration\\TEST-org.eclipse.jetty.test.AliasCheckerSymlinkTest.xml",
+        "status_in_original_baseline": "passed"
+      },
+      {
+        "suite": "test-integration",
+        "classname": "org.eclipse.jetty.test.AliasCheckerSymlinkTest",
+        "testcase": "testCombinedResource(Function, String, int, String)[18]",
+        "outcome": "failure",
+        "message": "\nExpected: is <200>\n     but: was <404>",
+        "xml": "C:\\Users\\Kevin\\AppData\\Local\\Temp\\jcc-770f5e4\\verified17\\target\\surefire-reports\\test-integration\\TEST-org.eclipse.jetty.test.AliasCheckerSymlinkTest.xml",
+        "status_in_original_baseline": "passed"
+      },
+      {
+        "suite": "test-integration",
+        "classname": "org.eclipse.jetty.test.AliasCheckerSymlinkTest",
+        "testcase": "testCombinedResource(Function, String, int, String)[19]",
+        "outcome": "failure",
+        "message": "\nExpected: is <200>\n     but: was <404>",
+        "xml": "C:\\Users\\Kevin\\AppData\\Local\\Temp\\jcc-770f5e4\\verified17\\target\\surefire-reports\\test-integration\\TEST-org.eclipse.jetty.test.AliasCheckerSymlinkTest.xml",
+        "status_in_original_baseline": "passed"
+      },
+      {
+        "suite": "test-integration",
+        "classname": "org.eclipse.jetty.test.AliasCheckerSymlinkTest",
+        "testcase": "testCombinedResource(Function, String, int, String)[20]",
+        "outcome": "failure",
+        "message": "\nExpected: is <200>\n     but: was <404>",
+        "xml": "C:\\Users\\Kevin\\AppData\\Local\\Temp\\jcc-770f5e4\\verified17\\target\\surefire-reports\\test-integration\\TEST-org.eclipse.jetty.test.AliasCheckerSymlinkTest.xml",
+        "status_in_original_baseline": "passed"
+      },
+      {
+        "suite": "test-integration",
+        "classname": "org.eclipse.jetty.test.AliasCheckerSymlinkTest",
+        "testcase": "testCombinedResource(Function, String, int, String)[21]",
+        "outcome": "failure",
+        "message": "\nExpected: is <200>\n     but: was <404>",
+        "xml": "C:\\Users\\Kevin\\AppData\\Local\\Temp\\jcc-770f5e4\\verified17\\target\\surefire-reports\\test-integration\\TEST-org.eclipse.jetty.test.AliasCheckerSymlinkTest.xml",
+        "status_in_original_baseline": "passed"
+      },
+      {
+        "suite": "test-integration",
+        "classname": "org.eclipse.jetty.test.AliasCheckerSymlinkTest",
+        "testcase": "testCombinedResource(Function, String, int, String)[30]",
+        "outcome": "failure",
+        "message": "\nExpected: is <200>\n     but: was <404>",
+        "xml": "C:\\Users\\Kevin\\AppData\\Local\\Temp\\jcc-770f5e4\\verified17\\target\\surefire-reports\\test-integration\\TEST-org.eclipse.jetty.test.AliasCheckerSymlinkTest.xml",
+        "status_in_original_baseline": "passed"
+      },
+      {
+        "suite": "test-integration",
+        "classname": "org.eclipse.jetty.test.AliasCheckerSymlinkTest",
+        "testcase": "testCombinedResource(Function, String, int, String)[31]",
+        "outcome": "failure",
+        "message": "\nExpected: is <200>\n     but: was <404>",
+        "xml": "C:\\Users\\Kevin\\AppData\\Local\\Temp\\jcc-770f5e4\\verified17\\target\\surefire-reports\\test-integration\\TEST-org.eclipse.jetty.test.AliasCheckerSymlinkTest.xml",
+        "status_in_original_baseline": "passed"
+      },
+      {
+        "suite": "test-integration",
+        "classname": "org.eclipse.jetty.test.AliasCheckerSymlinkTest",
+        "testcase": "testCombinedResource(Function, String, int, String)[32]",
+        "outcome": "failure",
+        "message": "\nExpected: is <200>\n     but: was <404>",
+        "xml": "C:\\Users\\Kevin\\AppData\\Local\\Temp\\jcc-770f5e4\\verified17\\target\\surefire-reports\\test-integration\\TEST-org.eclipse.jetty.test.AliasCheckerSymlinkTest.xml",
+        "status_in_original_baseline": "passed"
+      },
+      {
+        "suite": "test-integration",
+        "classname": "org.eclipse.jetty.test.AliasCheckerSymlinkTest",
+        "testcase": "testCombinedResource(Function, String, int, String)[34]",
+        "outcome": "failure",
+        "message": "\nExpected: is <200>\n     but: was <404>",
+        "xml": "C:\\Users\\Kevin\\AppData\\Local\\Temp\\jcc-770f5e4\\verified17\\target\\surefire-reports\\test-integration\\TEST-org.eclipse.jetty.test.AliasCheckerSymlinkTest.xml",
+        "status_in_original_baseline": "passed"
+      },
+      {
+        "suite": "test-integration",
+        "classname": "org.eclipse.jetty.test.AliasCheckerSymlinkTest",
+        "testcase": "testCombinedResource(Function, String, int, String)[35]",
+        "outcome": "failure",
+        "message": "\nExpected: is <200>\n     but: was <404>",
+        "xml": "C:\\Users\\Kevin\\AppData\\Local\\Temp\\jcc-770f5e4\\verified17\\target\\surefire-reports\\test-integration\\TEST-org.eclipse.jetty.test.AliasCheckerSymlinkTest.xml",
+        "status_in_original_baseline": "passed"
+      },
+      {
+        "suite": "test-integration",
+        "classname": "org.eclipse.jetty.test.AliasCheckerSymlinkTest",
+        "testcase": "testCombinedResource(Function, String, int, String)[36]",
+        "outcome": "failure",
+        "message": "\nExpected: is <200>\n     but: was <404>",
+        "xml": "C:\\Users\\Kevin\\AppData\\Local\\Temp\\jcc-770f5e4\\verified17\\target\\surefire-reports\\test-integration\\TEST-org.eclipse.jetty.test.AliasCheckerSymlinkTest.xml",
+        "status_in_original_baseline": "passed"
+      },
+      {
+        "suite": "test-integration",
+        "classname": "org.eclipse.jetty.test.AliasCheckerSymlinkTest",
+        "testcase": "testCombinedResource(Function, String, int, String)[37]",
+        "outcome": "failure",
+        "message": "\nExpected: is <200>\n     but: was <404>",
+        "xml": "C:\\Users\\Kevin\\AppData\\Local\\Temp\\jcc-770f5e4\\verified17\\target\\surefire-reports\\test-integration\\TEST-org.eclipse.jetty.test.AliasCheckerSymlinkTest.xml",
+        "status_in_original_baseline": "passed"
+      },
+      {
+        "suite": "test-integration",
+        "classname": "org.eclipse.jetty.test.AliasCheckerSymlinkTest",
+        "testcase": "testCombinedResource(Function, String, int, String)[40]",
+        "outcome": "failure",
+        "message": "\nExpected: is <200>\n     but: was <404>",
+        "xml": "C:\\Users\\Kevin\\AppData\\Local\\Temp\\jcc-770f5e4\\verified17\\target\\surefire-reports\\test-integration\\TEST-org.eclipse.jetty.test.AliasCheckerSymlinkTest.xml",
+        "status_in_original_baseline": "passed"
+      },
+      {
+        "suite": "test-integration",
+        "classname": "org.eclipse.jetty.test.AliasCheckerSymlinkTest",
+        "testcase": "testCombinedResource(Function, String, int, String)[41]",
+        "outcome": "failure",
+        "message": "\nExpected: is <200>\n     but: was <404>",
+        "xml": "C:\\Users\\Kevin\\AppData\\Local\\Temp\\jcc-770f5e4\\verified17\\target\\surefire-reports\\test-integration\\TEST-org.eclipse.jetty.test.AliasCheckerSymlinkTest.xml",
+        "status_in_original_baseline": "passed"
+      },
+      {
+        "suite": "test-integration",
+        "classname": "org.eclipse.jetty.test.AliasCheckerSymlinkTest",
+        "testcase": "testCombinedResource(Function, String, int, String)[42]",
+        "outcome": "failure",
+        "message": "\nExpected: is <200>\n     but: was <404>",
+        "xml": "C:\\Users\\Kevin\\AppData\\Local\\Temp\\jcc-770f5e4\\verified17\\target\\surefire-reports\\test-integration\\TEST-org.eclipse.jetty.test.AliasCheckerSymlinkTest.xml",
+        "status_in_original_baseline": "passed"
+      },
+      {
+        "suite": "test-integration",
+        "classname": "org.eclipse.jetty.test.AliasCheckerSymlinkTest",
+        "testcase": "testCombinedResource(Function, String, int, String)[43]",
+        "outcome": "failure",
+        "message": "\nExpected: is <200>\n     but: was <404>",
+        "xml": "C:\\Users\\Kevin\\AppData\\Local\\Temp\\jcc-770f5e4\\verified17\\target\\surefire-reports\\test-integration\\TEST-org.eclipse.jetty.test.AliasCheckerSymlinkTest.xml",
+        "status_in_original_baseline": "passed"
+      },
+      {
+        "suite": "test-integration",
+        "classname": "org.eclipse.jetty.test.AliasCheckerSymlinkTest",
+        "testcase": "testNullBaseResourceNotAllowed",
+        "outcome": "failure",
+        "message": "expected: <true> but was: <false>",
+        "xml": "C:\\Users\\Kevin\\AppData\\Local\\Temp\\jcc-770f5e4\\verified17\\target\\surefire-reports\\test-integration\\TEST-org.eclipse.jetty.test.AliasCheckerSymlinkTest.xml",
+        "status_in_original_baseline": "passed"
+      },
+      {
+        "suite": "test-integration",
+        "classname": "org.eclipse.jetty.test.CoreMultiPartTest",
+        "testcase": "testDoubleReadFromPart",
+        "outcome": "failure",
+        "message": "\nExpected: a string containing \"Part: name=myPart, size=88, content=the quick brown fox jumps over the lazy dog, the quick brown fox jumps over the lazy dog\\nPart: name=myPart, size=88, content=the quick brown fox jumps over the lazy dog, the quick brown fox jumps over the lazy dog\"\n     but: was \"Part: name=myPart, size=88, content=the quick brown fox jumps over the lazy dog, the quick brown fox jumps over the lazy dog\nPart: name=myPart, size=88, content=the quick brown fox jumps over the lazy dog, the quick brown fox jumps over the lazy dog\n\"",
+        "xml": "C:\\Users\\Kevin\\AppData\\Local\\Temp\\jcc-770f5e4\\verified17\\target\\surefire-reports\\test-integration\\TEST-org.eclipse.jetty.test.CoreMultiPartTest.xml",
+        "status_in_original_baseline": "failure"
+      },
+      {
+        "suite": "test-integration",
+        "classname": "org.eclipse.jetty.test.CoreMultiPartTest",
+        "testcase": "testLargePart",
+        "outcome": "failure",
+        "message": "\nExpected: an instance of org.eclipse.jetty.io.EofException\n     but: <java.io.EOFException: oejcti.HttpConnectionOverHTTP@27c16bc6::oeji.SocketChannelEndPoint@23fefbe6[{l=/127.0.0.1:56412,r=localhost/127.0.0.1:56411,ISHUT,fill=-,flush=P,to=9/30000}{:io=0/0,kio=0,kro=4}]->[oejcti.HttpConnectionOverHTTP@27c16bc6(l:/127.0.0.1:56412 <-> r:localhost/127.0.0.1:56411,closed=false)=>oejcti.HttpChannelOverHTTP@66fc61fd(exchange=HttpExchange@7b63df94{req=oejct.HttpRequest[POST /defaultConfig HTTP/1.1]@57500465[PENDING/null] res=HttpResponse[null 0 null]@325e4a2[PENDING/null]})[send=oejcti.HttpSenderOverHTTP@6d39eb2(req=CONTENT,failure=null)[oejh.HttpGenerator@63a97e83{s=COMMITTED}],recv=oejcti.HttpReceiverOverHTTP@340d3dbf(ex=HttpExchange@7b63df94{req=oejct.HttpRequest[POST /defaultConfig HTTP/1.1]@57500465[PENDING/null] res=HttpResponse[null 0 null]@325e4a2[PENDING/null]},rsp=IDLE,failure=null)[oejh.HttpParser{s=CLOSED,0 of -1}]]]> is a java.io.EOFException",
+        "xml": "C:\\Users\\Kevin\\AppData\\Local\\Temp\\jcc-770f5e4\\verified17\\target\\surefire-reports\\test-integration\\TEST-org.eclipse.jetty.test.CoreMultiPartTest.xml",
+        "status_in_original_baseline": "failure"
+      }
+    ],
+    "skips_by_message": {
+      "Not supported in current Compression libs": 1,
+      "(sin mensaje en Surefire)": 161,
+      "port to ee9": 3,
+      "Disabled on operating system: Windows 10 ==> Fails on Windows": 58,
+      "Disabled on operating system: Windows 10 ==> Unable to create all of the streams": 1,
+      "public void org.eclipse.jetty.http2.tests.MaxConcurrentStreamsTest.testTwoConcurrentStreamsThirdWaits() throws java.lang.Exception is @Disabled": 1,
+      "public void org.eclipse.jetty.security.SPNEGOAuthenticatorTest.testChallengeBadResponse() throws java.lang.Exception is @Disabled": 1,
+      "Disabled on JRE version: 17.0.11": 10,
+      "class org.eclipse.jetty.server.HttpChannelEventTest is @Disabled": 7,
+      "Disabled on operating system: Windows 10 ==> SO_REUSEPORT not available on windows": 1,
+      "public void org.eclipse.jetty.server.ShutdownMonitorTest.testExitVmDefault() throws java.lang.Exception is @Disabled": 1,
+      "public void org.eclipse.jetty.server.ShutdownMonitorTest.testExitVmFalse() throws java.lang.Exception is @Disabled": 1,
+      "public void org.eclipse.jetty.server.ShutdownMonitorTest.testExitVmTrue() throws java.lang.Exception is @Disabled": 1,
+      "public void org.eclipse.jetty.server.ShutdownMonitorTest.testNoExitSystemProperty() throws java.lang.Exception is @Disabled": 1,
+      "Disabled on operating system: Windows 10 ==> See Issue #6609 - TLSv1.3 behavior differences between Linux and Windows": 3,
+      "Disabled on operating system: Windows 10": 4,
+      "public void org.eclipse.jetty.test.rfc.RFC2616Test.test1439TEDeflate() throws java.lang.Exception is @Disabled": 1,
+      "public void org.eclipse.jetty.test.rfc.RFC7230Test.testInvalidWhiteSpaceInTE_3_2() throws java.lang.Exception is @Disabled": 1,
+      "Test disabled due to JDK bug JDK-8311079": 1,
+      "fails as PathResource now checks both Path and URI equivalence, and the latter fails": 1,
+      "Disabled on operating system: Windows 10 ==> Will result in java.net.SocketException: An established connection was aborted by the software in your host machine during IO.readBytes(input)": 1,
+      "System property [org.eclipse.jetty.util.UrlEncoding.charset] does not exist": 1
+    }
+  },
+  "jdk21": {
+    "groups": {
+      "focused-jetty-server": {
+        "passed": 1
+      },
+      "focused-jetty-test-client-transports": {
+        "passed": 14
+      },
+      "focused-jetty-util": {
+        "skipped": 24,
+        "passed": 18
+      }
+    },
+    "total": {
+      "passed": 33,
+      "skipped": 24
+    },
+    "failures": [],
+    "skips_by_message": {
+      "vt21-selection: platform invocation covered in the JDK 17 reactor": 24
+    }
+  },
+  "form_original": [
+    {
+      "testcase": "testMaxFormContentSizeExceeded(TransportType, Integer, Integer, int)[8] HTTPS, 128, 200001, 413",
+      "outcome": "passed",
+      "message": "",
+      "java": "17.0.11",
+      "xml": "C:\\Users\\Kevin\\AppData\\Local\\Temp\\jcc-770f5e4\\reports\\form-isolated-xml\\TEST-form-upstream.xml"
+    }
+  ],
+  "form_consolidated": [
+    {
+      "testcase": "testMaxFormContentSizeExceeded(TransportType, Integer, Integer, int)[8]",
+      "outcome": "passed",
+      "message": "",
+      "java": "17.0.11",
+      "xml": "C:\\Users\\Kevin\\AppData\\Local\\Temp\\jcc-770f5e4\\reports\\form-isolated-xml\\TEST-form-consolidated.xml"
+    }
+  ],
+  "selected_original_jars_in_consolidated_test_forks": [],
+  "form_class_comparison": {
+    "original": [
+      {
+        "testcase": "testMaxFormContentSizeExceeded(TransportType, Integer, Integer, int)[8] HTTPS, 128, 200001, 413",
+        "outcome": "passed",
+        "message": "",
+        "java": "17.0.11",
+        "xml": "C:\\Users\\Kevin\\AppData\\Local\\Temp\\jcc-770f5e4\\reports\\form-class-original17.xml"
+      }
+    ],
+    "consolidated": [
+      {
+        "testcase": "testMaxFormContentSizeExceeded(TransportType, Integer, Integer, int)[8]",
+        "outcome": "passed",
+        "message": "",
+        "java": "17.0.11",
+        "xml": "C:\\Users\\Kevin\\AppData\\Local\\Temp\\jcc-770f5e4\\reports\\form-class-consolidated17.xml"
+      }
+    ],
+    "full_consolidated": [
+      {
+        "testcase": "testMaxFormContentSizeExceeded(TransportType, Integer, Integer, int)[8]",
+        "outcome": "failure",
+        "message": "expected: <413> but was: <0>",
+        "java": "17.0.11",
+        "xml": "C:\\Users\\Kevin\\AppData\\Local\\Temp\\jcc-770f5e4\\verified17\\target\\surefire-reports\\jetty-test-client-transports\\TEST-org.eclipse.jetty.test.client.transport.FormTest.xml"
+      }
+    ]
+  },
+  "integration_retest_after_fixture_fix": {
+    "groups": {
+      "focused-test-integration": {
+        "passed": 132,
+        "failure": 1
+      }
+    },
+    "total": {
+      "passed": 132,
+      "failure": 1
+    },
+    "failures": [
+      {
+        "suite": "focused-test-integration",
+        "classname": "org.eclipse.jetty.test.CoreMultiPartTest",
+        "testcase": "testDoubleReadFromPart",
+        "outcome": "failure",
+        "message": "\nExpected: a string containing \"Part: name=myPart, size=88, content=the quick brown fox jumps over the lazy dog, the quick brown fox jumps over the lazy dog\\nPart: name=myPart, size=88, content=the quick brown fox jumps over the lazy dog, the quick brown fox jumps over the lazy dog\"\n     but: was \"Part: name=myPart, size=88, content=the quick brown fox jumps over the lazy dog, the quick brown fox jumps over the lazy dog\nPart: name=myPart, size=88, content=the quick brown fox jumps over the lazy dog, the quick brown fox jumps over the lazy dog\n\"",
+        "xml": "C:\\Users\\Kevin\\AppData\\Local\\Temp\\jcc-770f5e4\\integration-check\\target\\surefire-reports\\focused-test-integration\\TEST-org.eclipse.jetty.test.CoreMultiPartTest.xml"
+      }
+    ],
+    "skips_by_message": {}
+  },
+  "totals_after_replacing_only_fixture_reruns": {
+    "passed": 17219,
+    "skipped": 261,
+    "failure": 6,
+    "error": 3
+  },
+  "fixture_retests_passed": [
+    "ShutdownServiceTest#testShutdownXml",
+    "PasswordTest#testCommandLineUsage"
+  ],
+  "stream_class_comparison": {
+    "original": {
+      "groups": {
+        "reports": {
+          "passed": 3,
+          "error": 2
+        }
+      },
+      "total": {
+        "passed": 3,
+        "error": 2
+      },
+      "failures": [
+        {
+          "suite": "reports",
+          "classname": "org.eclipse.jetty.test.client.transport.HttpClientStreamTest",
+          "testcase": "testDownloadWithFailure(TransportType)[3] H2C",
+          "outcome": "error",
+          "message": "java.nio.channels.ClosedChannelException",
+          "xml": "C:\\Users\\Kevin\\AppData\\Local\\Temp\\jcc-770f5e4\\reports\\stream-control-original17.xml"
+        },
+        {
+          "suite": "reports",
+          "classname": "org.eclipse.jetty.test.client.transport.HttpClientStreamTest",
+          "testcase": "testDownloadWithFailure(TransportType)[4] H2",
+          "outcome": "error",
+          "message": "java.nio.channels.ClosedChannelException",
+          "xml": "C:\\Users\\Kevin\\AppData\\Local\\Temp\\jcc-770f5e4\\reports\\stream-control-original17.xml"
+        }
+      ],
+      "skips_by_message": {}
+    },
+    "consolidated": {
+      "groups": {
+        "reports": {
+          "passed": 4,
+          "error": 1
+        }
+      },
+      "total": {
+        "passed": 4,
+        "error": 1
+      },
+      "failures": [
+        {
+          "suite": "reports",
+          "classname": "org.eclipse.jetty.test.client.transport.HttpClientStreamTest",
+          "testcase": "testDownloadWithFailure(TransportType)[3]",
+          "outcome": "error",
+          "message": "java.nio.channels.ClosedChannelException",
+          "xml": "C:\\Users\\Kevin\\AppData\\Local\\Temp\\jcc-770f5e4\\reports\\stream-control-consolidated17.xml"
+        }
+      ],
+      "skips_by_message": {}
+    }
+  },
+  "test_forks": {
+    "reports_checked": 452,
+    "reports_using_consolidated_target_classes": 452,
+    "java_version_and_home": [
+      [
+        "17.0.11",
+        "C:\\Program Files\\Java\\jdk-17"
+      ],
+      [
+        "21.0.13.1",
+        "C:\\Users\\Kevin\\AppData\\Local\\Temp\\jetty-jdk21-ms-21.0.13.1\\jdk-21.0.13.1+2"
+      ]
+    ]
+  },
+  "maven_runs": {
+    "cli-fixture17": {
+      "args": [
+        "C:\\Users\\Kevin\\.m2\\wrapper\\dists\\apache-maven-3.9.12\\59fe215c0ad6947fea90184bf7add084544567b927287592651fda3782e0e798\\bin\\mvn.cmd",
+        "-B",
+        "-ntp",
+        "-o",
+        "-Dmaven.repo.local=C:\\Users\\Kevin\\AppData\\Local\\Temp\\jcc-770f5e4\\repository",
+        "-Pfocused-tests",
+        "-Djetty.test.fixture=jetty-util",
+        "-Dtest=PasswordTest#testCommandLineUsage",
+        "-Djunit.jupiter.execution.parallel.enabled=false",
+        "verify"
+      ],
+      "jdk": "C:\\Program Files\\Java\\jdk-17",
+      "cwd": "C:\\Users\\Kevin\\AppData\\Local\\Temp\\jcc-770f5e4\\verification21",
+      "exit_code": 0
+    },
+    "config-fixture17": {
+      "args": [
+        "C:\\Users\\Kevin\\.m2\\wrapper\\dists\\apache-maven-3.9.12\\59fe215c0ad6947fea90184bf7add084544567b927287592651fda3782e0e798\\bin\\mvn.cmd",
+        "-B",
+        "-ntp",
+        "-o",
+        "-Dmaven.repo.local=C:\\Users\\Kevin\\AppData\\Local\\Temp\\jcc-770f5e4\\repository",
+        "-Pfocused-tests",
+        "-Djetty.test.fixture=jetty-server",
+        "-Dtest=ShutdownServiceTest#testShutdownXml",
+        "-Djunit.jupiter.execution.parallel.enabled=false",
+        "verify"
+      ],
+      "jdk": "C:\\Program Files\\Java\\jdk-17",
+      "cwd": "C:\\Users\\Kevin\\AppData\\Local\\Temp\\jcc-770f5e4\\verification21",
+      "exit_code": 0
+    },
+    "consumer17-http": {
+      "args": [
+        "C:\\Users\\Kevin\\.m2\\wrapper\\dists\\apache-maven-3.9.12\\59fe215c0ad6947fea90184bf7add084544567b927287592651fda3782e0e798\\bin\\mvn.cmd",
+        "-B",
+        "-ntp",
+        "-o",
+        "-Dmaven.repo.local=C:\\Users\\Kevin\\AppData\\Local\\Temp\\jcc-770f5e4\\repository",
+        "verify"
+      ],
+      "jdk": "C:\\Program Files\\Java\\jdk-17",
+      "cwd": "C:\\Users\\Kevin\\AppData\\Local\\Temp\\jcc-770f5e4\\consumer",
+      "exit_code": 0
+    },
+    "consumer17-release": {
+      "args": [
+        "C:\\Users\\Kevin\\.m2\\wrapper\\dists\\apache-maven-3.9.12\\59fe215c0ad6947fea90184bf7add084544567b927287592651fda3782e0e798\\bin\\mvn.cmd",
+        "-B",
+        "-ntp",
+        "-o",
+        "-Dmaven.repo.local=C:\\Users\\Kevin\\AppData\\Local\\Temp\\jcc-770f5e4\\repository",
+        "verify",
+        "org.apache.maven.plugins:maven-dependency-plugin:3.10.0:tree"
+      ],
+      "jdk": "C:\\Program Files\\Java\\jdk-17",
+      "cwd": "C:\\Users\\Kevin\\AppData\\Local\\Temp\\jcc-770f5e4\\consumer",
+      "exit_code": 0
+    },
+    "consumer17": {
+      "args": [
+        "C:\\Users\\Kevin\\.m2\\wrapper\\dists\\apache-maven-3.9.12\\59fe215c0ad6947fea90184bf7add084544567b927287592651fda3782e0e798\\bin\\mvn.cmd",
+        "-B",
+        "-ntp",
+        "-o",
+        "-Dmaven.repo.local=C:\\Users\\Kevin\\AppData\\Local\\Temp\\jcc-770f5e4\\repository",
+        "verify",
+        "org.apache.maven.plugins:maven-dependency-plugin:3.10.0:tree"
+      ],
+      "jdk": "C:\\Program Files\\Java\\jdk-17",
+      "cwd": "C:\\Users\\Kevin\\AppData\\Local\\Temp\\jcc-770f5e4\\consumer",
+      "exit_code": 1
+    },
+    "form-class-consolidated17": {
+      "args": [
+        "C:\\Users\\Kevin\\.m2\\wrapper\\dists\\apache-maven-3.9.12\\59fe215c0ad6947fea90184bf7add084544567b927287592651fda3782e0e798\\bin\\mvn.cmd",
+        "-B",
+        "-ntp",
+        "-o",
+        "-Dmaven.repo.local=C:\\Users\\Kevin\\AppData\\Local\\Temp\\jcc-770f5e4\\repository",
+        "-Pfocused-tests",
+        "-Djetty.test.fixture=jetty-test-client-transports",
+        "-Dtest=org.eclipse.jetty.test.client.transport.FormTest",
+        "-Dmaven.test.failure.ignore=true",
+        "-Djunit.jupiter.execution.parallel.enabled=false",
+        "-Djunit.jupiter.execution.timeout.aftereach.method.default=60 s",
+        "-Djunit.jupiter.execution.timeout.test.method.default=120 s",
+        "-Djunit.jupiter.execution.timeout.testtemplate.method.default=120 s",
+        "-Djetty.surefire.argLine=-Dfile.encoding=UTF-8 -Duser.language=en -Duser.region=US -Xms64m -Xmx1792m",
+        "verify"
+      ],
+      "jdk": "C:\\Program Files\\Java\\jdk-17",
+      "cwd": "C:\\Users\\Kevin\\AppData\\Local\\Temp\\jcc-770f5e4\\verification21",
+      "exit_code": 0
+    },
+    "form-class-original17": {
+      "args": [
+        "C:\\Users\\Kevin\\.m2\\wrapper\\dists\\apache-maven-3.9.12\\59fe215c0ad6947fea90184bf7add084544567b927287592651fda3782e0e798\\bin\\mvn.cmd",
+        "-B",
+        "-ntp",
+        "-o",
+        "-Dmaven.repo.local=C:\\Users\\Kevin\\AppData\\Local\\Temp\\jcc-770f5e4\\repository",
+        "-pl",
+        "jetty-core/jetty-tests/jetty-test-client-transports",
+        "-am",
+        "-Dsurefire.failIfNoSpecifiedTests=false",
+        "-Dmaven.build.cache.enabled=false",
+        "-Dspotless.skip=true",
+        "-Dcheckstyle.skip=true",
+        "-Dtest=org.eclipse.jetty.test.client.transport.FormTest",
+        "-Dmaven.test.failure.ignore=true",
+        "-Djunit.jupiter.execution.parallel.enabled=false",
+        "-Djunit.jupiter.execution.timeout.aftereach.method.default=60 s",
+        "-Djunit.jupiter.execution.timeout.test.method.default=120 s",
+        "-Djunit.jupiter.execution.timeout.testtemplate.method.default=120 s",
+        "-Djetty.surefire.argLine=-Dfile.encoding=UTF-8 -Duser.language=en -Duser.region=US -Xms64m -Xmx1792m",
+        "verify"
+      ],
+      "jdk": "C:\\Program Files\\Java\\jdk-17",
+      "cwd": "C:\\Users\\Kevin\\AppData\\Local\\Temp\\jcc-770f5e4\\original-form",
+      "exit_code": 0
+    },
+    "form-consolidated17-final": {
+      "args": [
+        "C:\\Users\\Kevin\\.m2\\wrapper\\dists\\apache-maven-3.9.12\\59fe215c0ad6947fea90184bf7add084544567b927287592651fda3782e0e798\\bin\\mvn.cmd",
+        "-B",
+        "-ntp",
+        "-o",
+        "-Dmaven.repo.local=C:\\Users\\Kevin\\AppData\\Local\\Temp\\jcc-770f5e4\\repository",
+        "-Pfocused-tests",
+        "-Djetty.test.fixture=jetty-test-client-transports",
+        "-Dtest=org.eclipse.jetty.test.client.transport.FormTest#testMaxFormContentSizeExceeded",
+        "-Djetty.test.extension=C:\\Users\\Kevin\\AppData\\Local\\Temp\\jcv-diag-770f5e4\\diag-filter.jar",
+        "-Djunit.jupiter.execution.parallel.enabled=false",
+        "-Djetty.surefire.argLine=-Dfile.encoding=UTF-8 -Duser.language=en -Duser.region=US -Xms64m -Xmx1792m",
+        "clean",
+        "verify"
+      ],
+      "jdk": "C:\\Program Files\\Java\\jdk-17",
+      "cwd": "C:\\Users\\Kevin\\AppData\\Local\\Temp\\jcc-770f5e4\\verification21",
+      "exit_code": 0
+    },
+    "form-consolidated17": {
+      "args": [
+        "C:\\Users\\Kevin\\.m2\\wrapper\\dists\\apache-maven-3.9.12\\59fe215c0ad6947fea90184bf7add084544567b927287592651fda3782e0e798\\bin\\mvn.cmd",
+        "-B",
+        "-ntp",
+        "-o",
+        "-Dmaven.repo.local=C:\\Users\\Kevin\\AppData\\Local\\Temp\\jcc-770f5e4\\repository",
+        "-Pfocused-tests",
+        "-Djetty.test.fixture=jetty-test-client-transports",
+        "-Dtest=org.eclipse.jetty.test.client.transport.FormTest#testMaxFormContentSizeExceeded",
+        "-Djetty.test.extension=C:\\Users\\Kevin\\AppData\\Local\\Temp\\jcv-diag-770f5e4\\diag-filter.jar",
+        "-Djunit.jupiter.execution.parallel.enabled=false",
+        "-Djetty.surefire.argLine=-Dfile.encoding=UTF-8 -Duser.language=en -Duser.region=US -Xms64m -Xmx1792m",
+        "clean",
+        "verify"
+      ],
+      "jdk": "C:\\Program Files\\Java\\jdk-17",
+      "cwd": "C:\\Users\\Kevin\\AppData\\Local\\Temp\\jcc-770f5e4\\verification21",
+      "exit_code": 0
+    },
+    "form-original17": {
+      "args": [
+        "C:\\Users\\Kevin\\.m2\\wrapper\\dists\\apache-maven-3.9.12\\59fe215c0ad6947fea90184bf7add084544567b927287592651fda3782e0e798\\bin\\mvn.cmd",
+        "-B",
+        "-ntp",
+        "-o",
+        "-Dmaven.repo.local=C:\\Users\\Kevin\\AppData\\Local\\Temp\\jcc-770f5e4\\repository",
+        "-pl",
+        "jetty-core/jetty-tests/jetty-test-client-transports",
+        "-am",
+        "-Dtest=org.eclipse.jetty.test.client.transport.FormTest#testMaxFormContentSizeExceeded",
+        "-Dmaven.test.additionalClasspath=C:\\Users\\Kevin\\AppData\\Local\\Temp\\jcv-diag-770f5e4\\diag-filter.jar",
+        "-Dsurefire.failIfNoSpecifiedTests=false",
+        "-Dmaven.build.cache.enabled=false",
+        "-Dspotless.skip=true",
+        "-Dcheckstyle.skip=true",
+        "-Djunit.jupiter.execution.parallel.enabled=false",
+        "-Djetty.surefire.argLine=-Dfile.encoding=UTF-8 -Duser.language=en -Duser.region=US -Xms64m -Xmx1792m",
+        "verify"
+      ],
+      "jdk": "C:\\Program Files\\Java\\jdk-17",
+      "cwd": "C:\\Users\\Kevin\\AppData\\Local\\Temp\\jcc-770f5e4\\original-form",
+      "exit_code": 0
+    },
+    "install17-release": {
+      "args": [
+        "C:\\Users\\Kevin\\.m2\\wrapper\\dists\\apache-maven-3.9.12\\59fe215c0ad6947fea90184bf7add084544567b927287592651fda3782e0e798\\bin\\mvn.cmd",
+        "-B",
+        "-ntp",
+        "-o",
+        "-Dmaven.repo.local=C:\\Users\\Kevin\\AppData\\Local\\Temp\\jcc-770f5e4\\repository",
+        "org.apache.maven.plugins:maven-install-plugin:3.1.4:install-file",
+        "-Dfile=C:\\Users\\Kevin\\AppData\\Local\\Temp\\jcc-770f5e4\\integration-check\\target\\jetty-core-consolidated-12.1.15.jar",
+        "-DpomFile=C:\\Users\\Kevin\\AppData\\Local\\Temp\\jcc-770f5e4\\verified17\\pom.xml"
+      ],
+      "jdk": "C:\\Program Files\\Java\\jdk-17",
+      "cwd": "C:\\Users\\Kevin\\AppData\\Local\\Temp\\jcc-770f5e4\\verified17",
+      "exit_code": 0
+    },
+    "install17": {
+      "args": [
+        "C:\\Users\\Kevin\\.m2\\wrapper\\dists\\apache-maven-3.9.12\\59fe215c0ad6947fea90184bf7add084544567b927287592651fda3782e0e798\\bin\\mvn.cmd",
+        "-B",
+        "-ntp",
+        "-o",
+        "-Dmaven.repo.local=C:\\Users\\Kevin\\AppData\\Local\\Temp\\jcc-770f5e4\\repository",
+        "org.apache.maven.plugins:maven-install-plugin:3.1.4:install-file",
+        "-Dfile=C:\\Users\\Kevin\\AppData\\Local\\Temp\\jcc-770f5e4\\verified17\\target\\jetty-core-consolidated-12.1.15.jar",
+        "-DpomFile=C:\\Users\\Kevin\\AppData\\Local\\Temp\\jcc-770f5e4\\verified17\\pom.xml"
+      ],
+      "jdk": "C:\\Program Files\\Java\\jdk-17",
+      "cwd": "C:\\Users\\Kevin\\AppData\\Local\\Temp\\jcc-770f5e4\\verified17",
+      "exit_code": 0
+    },
+    "integration-fixture17": {
+      "args": [
+        "C:\\Users\\Kevin\\.m2\\wrapper\\dists\\apache-maven-3.9.12\\59fe215c0ad6947fea90184bf7add084544567b927287592651fda3782e0e798\\bin\\mvn.cmd",
+        "-B",
+        "-ntp",
+        "-o",
+        "-Dmaven.repo.local=C:\\Users\\Kevin\\AppData\\Local\\Temp\\jcc-770f5e4\\repository",
+        "-Pfocused-tests",
+        "-Djetty.test.fixture=test-integration",
+        "-Djetty.test.classesDirectory=C:\\Users\\Kevin\\AppData\\Local\\Temp\\jcc-770f5e4\\integration-check\\target\\fixtures\\test-integration\\target\\test-classes",
+        "-Dtest=AliasCheckerMultipleResourceTest,AliasCheckerSymlinkTest,AmbiguousPathTest,CoreMultiPartTest,MultiAuthenticatorTest",
+        "-Djunit.jupiter.execution.parallel.enabled=false",
+        "-Dmaven.test.failure.ignore=true",
+        "verify"
+      ],
+      "jdk": "C:\\Program Files\\Java\\jdk-17",
+      "cwd": "C:\\Users\\Kevin\\AppData\\Local\\Temp\\jcc-770f5e4\\integration-check",
+      "exit_code": 0
+    },
+    "server-control-consolidated17": {
+      "args": [
+        "C:\\Users\\Kevin\\.m2\\wrapper\\dists\\apache-maven-3.9.12\\59fe215c0ad6947fea90184bf7add084544567b927287592651fda3782e0e798\\bin\\mvn.cmd",
+        "-B",
+        "-ntp",
+        "-o",
+        "-Dmaven.repo.local=C:\\Users\\Kevin\\AppData\\Local\\Temp\\jcc-770f5e4\\repository",
+        "-Pfocused-tests",
+        "-Djetty.test.fixture=jetty-server",
+        "-Dtest=LargeHeaderTest#testLargeHeaderNewConnectionsConcurrent,ServerConnectorSslServerTest#testHoldContent",
+        "-Dmaven.test.failure.ignore=true",
+        "-Djunit.jupiter.execution.parallel.enabled=false",
+        "-Djunit.jupiter.execution.timeout.aftereach.method.default=60 s",
+        "-Djunit.jupiter.execution.timeout.test.method.default=120 s",
+        "-Djunit.jupiter.execution.timeout.testtemplate.method.default=120 s",
+        "verify"
+      ],
+      "jdk": "C:\\Program Files\\Java\\jdk-17",
+      "cwd": "C:\\Users\\Kevin\\AppData\\Local\\Temp\\jcc-770f5e4\\verification21",
+      "exit_code": 0
+    },
+    "server-control-original17": {
+      "args": [
+        "C:\\Users\\Kevin\\.m2\\wrapper\\dists\\apache-maven-3.9.12\\59fe215c0ad6947fea90184bf7add084544567b927287592651fda3782e0e798\\bin\\mvn.cmd",
+        "-B",
+        "-ntp",
+        "-o",
+        "-Dmaven.repo.local=C:\\Users\\Kevin\\AppData\\Local\\Temp\\jcc-770f5e4\\repository",
+        "-pl",
+        "jetty-core/jetty-server",
+        "-am",
+        "-Dtest=LargeHeaderTest#testLargeHeaderNewConnectionsConcurrent,ServerConnectorSslServerTest#testHoldContent,RequestListenersTest,HttpChannelTest#testBlockingPOST",
+        "-Dsurefire.failIfNoSpecifiedTests=false",
+        "-Dmaven.build.cache.enabled=false",
+        "-Dspotless.skip=true",
+        "-Dcheckstyle.skip=true",
+        "-Dmaven.test.failure.ignore=true",
+        "-Djunit.jupiter.execution.parallel.enabled=false",
+        "-Djunit.jupiter.execution.timeout.aftereach.method.default=60 s",
+        "-Djunit.jupiter.execution.timeout.test.method.default=120 s",
+        "-Djunit.jupiter.execution.timeout.testtemplate.method.default=120 s",
+        "-Djetty.surefire.argLine=-Dfile.encoding=UTF-8 -Duser.language=en -Duser.region=US -Xms64m -Xmx1792m",
+        "verify"
+      ],
+      "jdk": "C:\\Program Files\\Java\\jdk-17",
+      "cwd": "C:\\Users\\Kevin\\AppData\\Local\\Temp\\jcc-770f5e4\\original-form",
+      "exit_code": 0
+    },
+    "stream-control-consolidated17": {
+      "args": [
+        "C:\\Users\\Kevin\\.m2\\wrapper\\dists\\apache-maven-3.9.12\\59fe215c0ad6947fea90184bf7add084544567b927287592651fda3782e0e798\\bin\\mvn.cmd",
+        "-B",
+        "-ntp",
+        "-o",
+        "-Dmaven.repo.local=C:\\Users\\Kevin\\AppData\\Local\\Temp\\jcc-770f5e4\\repository",
+        "-Pfocused-tests",
+        "-Djetty.test.fixture=jetty-test-client-transports",
+        "-Dtest=org.eclipse.jetty.test.client.transport.HttpClientStreamTest#testDownloadWithFailure",
+        "-Dmaven.test.failure.ignore=true",
+        "-Djunit.jupiter.execution.parallel.enabled=false",
+        "-Djunit.jupiter.execution.timeout.aftereach.method.default=60 s",
+        "-Djunit.jupiter.execution.timeout.test.method.default=120 s",
+        "-Djunit.jupiter.execution.timeout.testtemplate.method.default=120 s",
+        "-Djetty.surefire.argLine=-Dfile.encoding=UTF-8 -Duser.language=en -Duser.region=US -Xms64m -Xmx1792m",
+        "verify"
+      ],
+      "jdk": "C:\\Program Files\\Java\\jdk-17",
+      "cwd": "C:\\Users\\Kevin\\AppData\\Local\\Temp\\jcc-770f5e4\\verification21",
+      "exit_code": 0
+    },
+    "stream-control-original17": {
+      "args": [
+        "C:\\Users\\Kevin\\.m2\\wrapper\\dists\\apache-maven-3.9.12\\59fe215c0ad6947fea90184bf7add084544567b927287592651fda3782e0e798\\bin\\mvn.cmd",
+        "-B",
+        "-ntp",
+        "-o",
+        "-Dmaven.repo.local=C:\\Users\\Kevin\\AppData\\Local\\Temp\\jcc-770f5e4\\repository",
+        "-pl",
+        "jetty-core/jetty-tests/jetty-test-client-transports",
+        "-am",
+        "-Dsurefire.failIfNoSpecifiedTests=false",
+        "-Dmaven.build.cache.enabled=false",
+        "-Dspotless.skip=true",
+        "-Dcheckstyle.skip=true",
+        "-Dtest=org.eclipse.jetty.test.client.transport.HttpClientStreamTest#testDownloadWithFailure",
+        "-Dmaven.test.failure.ignore=true",
+        "-Djunit.jupiter.execution.parallel.enabled=false",
+        "-Djunit.jupiter.execution.timeout.aftereach.method.default=60 s",
+        "-Djunit.jupiter.execution.timeout.test.method.default=120 s",
+        "-Djunit.jupiter.execution.timeout.testtemplate.method.default=120 s",
+        "-Djetty.surefire.argLine=-Dfile.encoding=UTF-8 -Duser.language=en -Duser.region=US -Xms64m -Xmx1792m",
+        "verify"
+      ],
+      "jdk": "C:\\Program Files\\Java\\jdk-17",
+      "cwd": "C:\\Users\\Kevin\\AppData\\Local\\Temp\\jcc-770f5e4\\original-form",
+      "exit_code": 0
+    },
+    "verify17-bounded": {
+      "args": [
+        "C:\\Users\\Kevin\\.m2\\wrapper\\dists\\apache-maven-3.9.12\\59fe215c0ad6947fea90184bf7add084544567b927287592651fda3782e0e798\\bin\\mvn.cmd",
+        "-B",
+        "-ntp",
+        "-o",
+        "-Dmaven.repo.local=C:\\Users\\Kevin\\AppData\\Local\\Temp\\jcc-770f5e4\\repository",
+        "-Dmaven.test.failure.ignore=true",
+        "-Djunit.jupiter.execution.parallel.enabled=false",
+        "-Djunit.jupiter.execution.timeout.aftereach.method.default=60 s",
+        "-Djunit.jupiter.execution.timeout.test.method.default=120 s",
+        "-Djunit.jupiter.execution.timeout.testtemplate.method.default=120 s",
+        "verify"
+      ],
+      "jdk": "C:\\Program Files\\Java\\jdk-17",
+      "cwd": "C:\\Users\\Kevin\\AppData\\Local\\Temp\\jcc-770f5e4\\verified17",
+      "exit_code": 0
+    },
+    "verify17-final": {
+      "args": [
+        "C:\\Users\\Kevin\\.m2\\wrapper\\dists\\apache-maven-3.9.12\\59fe215c0ad6947fea90184bf7add084544567b927287592651fda3782e0e798\\bin\\mvn.cmd",
+        "-B",
+        "-ntp",
+        "-o",
+        "-Dmaven.repo.local=C:\\Users\\Kevin\\AppData\\Local\\Temp\\jcc-770f5e4\\repository",
+        "-Dmaven.test.failure.ignore=true",
+        "verify"
+      ],
+      "jdk": "C:\\Program Files\\Java\\jdk-17",
+      "cwd": "C:\\Users\\Kevin\\AppData\\Local\\Temp\\jcc-770f5e4\\verified17",
+      "exit_code": 0
+    },
+    "virtual-server21-final": {
+      "args": [
+        "C:\\Users\\Kevin\\.m2\\wrapper\\dists\\apache-maven-3.9.12\\59fe215c0ad6947fea90184bf7add084544567b927287592651fda3782e0e798\\bin\\mvn.cmd",
+        "-B",
+        "-ntp",
+        "-o",
+        "-Dmaven.repo.local=C:\\Users\\Kevin\\AppData\\Local\\Temp\\jcc-770f5e4\\repository",
+        "-Pfocused-tests",
+        "-Djetty.test.fixture=jetty-server",
+        "-Dtest=QoSHandlerTest#testRequestInVirtualThreadIsResumedInVirtualThread",
+        "-Djetty.surefire.argLine=-Dfile.encoding=UTF-8 -Duser.language=en -Duser.region=US -showversion -Xms64m -Xmx1024m",
+        "verify"
+      ],
+      "jdk": "C:\\Users\\Kevin\\AppData\\Local\\Temp\\jetty-jdk21-ms-21.0.13.1\\jdk-21.0.13.1+2",
+      "cwd": "C:\\Users\\Kevin\\AppData\\Local\\Temp\\jcc-770f5e4\\verification21",
+      "exit_code": 0
+    },
+    "virtual-server21": {
+      "args": [
+        "C:\\Users\\Kevin\\.m2\\wrapper\\dists\\apache-maven-3.9.12\\59fe215c0ad6947fea90184bf7add084544567b927287592651fda3782e0e798\\bin\\mvn.cmd",
+        "-B",
+        "-ntp",
+        "-o",
+        "-Dmaven.repo.local=C:\\Users\\Kevin\\AppData\\Local\\Temp\\jcc-770f5e4\\repository",
+        "-Pfocused-tests",
+        "-Djetty.test.fixture=jetty-server",
+        "-Dtest=QoSHandlerTest#testRequestInVirtualThreadIsResumedInVirtualThread",
+        "-Djetty.surefire.argLine=-Dfile.encoding=UTF-8 -Duser.language=en -Duser.region=US -showversion -Xms64m -Xmx1024m",
+        "verify"
+      ],
+      "jdk": "C:\\Users\\Kevin\\AppData\\Local\\Temp\\jetty-jdk21-ms-21.0.13.1\\jdk-21.0.13.1+2",
+      "cwd": "C:\\Users\\Kevin\\AppData\\Local\\Temp\\jcc-770f5e4\\verification21",
+      "exit_code": 0
+    },
+    "virtual-transport21-final": {
+      "args": [
+        "C:\\Users\\Kevin\\.m2\\wrapper\\dists\\apache-maven-3.9.12\\59fe215c0ad6947fea90184bf7add084544567b927287592651fda3782e0e798\\bin\\mvn.cmd",
+        "-B",
+        "-ntp",
+        "-o",
+        "-Dmaven.repo.local=C:\\Users\\Kevin\\AppData\\Local\\Temp\\jcc-770f5e4\\repository",
+        "-Pfocused-tests",
+        "-Djetty.test.fixture=jetty-test-client-transports",
+        "-Dtest=VirtualThreadsTest",
+        "-Djetty.surefire.argLine=-Dfile.encoding=UTF-8 -Duser.language=en -Duser.region=US -showversion -Xms64m -Xmx1024m",
+        "verify"
+      ],
+      "jdk": "C:\\Users\\Kevin\\AppData\\Local\\Temp\\jetty-jdk21-ms-21.0.13.1\\jdk-21.0.13.1+2",
+      "cwd": "C:\\Users\\Kevin\\AppData\\Local\\Temp\\jcc-770f5e4\\verification21",
+      "exit_code": 0
+    },
+    "virtual-transport21": {
+      "args": [
+        "C:\\Users\\Kevin\\.m2\\wrapper\\dists\\apache-maven-3.9.12\\59fe215c0ad6947fea90184bf7add084544567b927287592651fda3782e0e798\\bin\\mvn.cmd",
+        "-B",
+        "-ntp",
+        "-o",
+        "-Dmaven.repo.local=C:\\Users\\Kevin\\AppData\\Local\\Temp\\jcc-770f5e4\\repository",
+        "-Pfocused-tests",
+        "-Djetty.test.fixture=jetty-test-client-transports",
+        "-Dtest=VirtualThreadsTest",
+        "-Djetty.surefire.argLine=-Dfile.encoding=UTF-8 -Duser.language=en -Duser.region=US -showversion -Xms64m -Xmx1024m",
+        "verify"
+      ],
+      "jdk": "C:\\Users\\Kevin\\AppData\\Local\\Temp\\jetty-jdk21-ms-21.0.13.1\\jdk-21.0.13.1+2",
+      "cwd": "C:\\Users\\Kevin\\AppData\\Local\\Temp\\jcc-770f5e4\\verification21",
+      "exit_code": 0
+    },
+    "virtual-util21-final": {
+      "args": [
+        "C:\\Users\\Kevin\\.m2\\wrapper\\dists\\apache-maven-3.9.12\\59fe215c0ad6947fea90184bf7add084544567b927287592651fda3782e0e798\\bin\\mvn.cmd",
+        "-B",
+        "-ntp",
+        "-o",
+        "-Dmaven.repo.local=C:\\Users\\Kevin\\AppData\\Local\\Temp\\jcc-770f5e4\\repository",
+        "-Pfocused-tests",
+        "-Djetty.test.fixture=jetty-util",
+        "-Dtest=VirtualThreadPoolTest,ExecutionStrategyTest",
+        "-Djetty.test.extension=C:\\Users\\Kevin\\AppData\\Local\\Temp\\jcv-vt21-770f5e4-verify\\virtual-invocations.jar",
+        "-Djetty.surefire.argLine=-Dfile.encoding=UTF-8 -Duser.language=en -Duser.region=US -showversion -Xms64m -Xmx1024m",
+        "clean",
+        "verify"
+      ],
+      "jdk": "C:\\Users\\Kevin\\AppData\\Local\\Temp\\jetty-jdk21-ms-21.0.13.1\\jdk-21.0.13.1+2",
+      "cwd": "C:\\Users\\Kevin\\AppData\\Local\\Temp\\jcc-770f5e4\\verification21",
+      "exit_code": 0
+    },
+    "virtual-util21": {
+      "args": [
+        "C:\\Users\\Kevin\\.m2\\wrapper\\dists\\apache-maven-3.9.12\\59fe215c0ad6947fea90184bf7add084544567b927287592651fda3782e0e798\\bin\\mvn.cmd",
+        "-B",
+        "-ntp",
+        "-o",
+        "-Dmaven.repo.local=C:\\Users\\Kevin\\AppData\\Local\\Temp\\jcc-770f5e4\\repository",
+        "-Pfocused-tests",
+        "-Djetty.test.fixture=jetty-util",
+        "-Dtest=VirtualThreadPoolTest,ExecutionStrategyTest",
+        "-Djetty.test.extension=C:\\Users\\Kevin\\AppData\\Local\\Temp\\jcv-vt21-770f5e4-verify\\virtual-invocations.jar",
+        "-Djetty.surefire.argLine=-Dfile.encoding=UTF-8 -Duser.language=en -Duser.region=US -showversion -Xms64m -Xmx1024m",
+        "verify"
+      ],
+      "jdk": "C:\\Users\\Kevin\\AppData\\Local\\Temp\\jetty-jdk21-ms-21.0.13.1\\jdk-21.0.13.1+2",
+      "cwd": "C:\\Users\\Kevin\\AppData\\Local\\Temp\\jcc-770f5e4\\verification21",
+      "exit_code": 0
+    }
+  }
+}

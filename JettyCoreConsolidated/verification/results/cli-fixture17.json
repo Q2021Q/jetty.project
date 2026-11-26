@@ -1,0 +1,17 @@
+{
+  "args": [
+    "C:\\Users\\Kevin\\.m2\\wrapper\\dists\\apache-maven-3.9.12\\59fe215c0ad6947fea90184bf7add084544567b927287592651fda3782e0e798\\bin\\mvn.cmd",
+    "-B",
+    "-ntp",
+    "-o",
+    "-Dmaven.repo.local=C:\\Users\\Kevin\\AppData\\Local\\Temp\\jcc-770f5e4\\repository",
+    "-Pfocused-tests",
+    "-Djetty.test.fixture=jetty-util",
+    "-Dtest=PasswordTest#testCommandLineUsage",
+    "-Djunit.jupiter.execution.parallel.enabled=false",
+    "verify"
+  ],
+  "jdk": "C:\\Program Files\\Java\\jdk-17",
+  "cwd": "C:\\Users\\Kevin\\AppData\\Local\\Temp\\jcc-770f5e4\\verification21",
+  "exit_code": 0
+}

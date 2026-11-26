@@ -1,0 +1,5 @@
+org/eclipse/jetty/test/AliasCheckerMultipleResourceTest.java
+org/eclipse/jetty/test/AliasCheckerSymlinkTest.java
+org/eclipse/jetty/test/AmbiguousPathTest.java
+org/eclipse/jetty/test/CoreMultiPartTest.java
+org/eclipse/jetty/test/MultiAuthenticatorTest.java

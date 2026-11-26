@@ -2,6 +2,8 @@
 
 Esta guía corresponde al tag `jetty-12.1.15` y al commit `770f5e4d1c39673d6356163118a1e6bf1117ced3`. La carpeta `Jetty` contiene el checkout `JettyCore12.1.15`. La raíz Maven y Git es `Jetty/JettyCore12.1.15`, donde está [pom.xml](../pom.xml). Los comandos y rutas de módulos parten de esa raíz o de una copia de ella. La prueba se hace en una copia limpia con repositorio Maven propio para conservar el checkout y los informes anteriores.
 
+La [investigación de las ocho incidencias pendientes](jetty-core-12.1.15-ocho-incidencias.md) registra los resultados Windows verificados, el aprobado Linux en GitHub comunicado por el propietario y la decisión de aplazar correcciones hasta reproducir los fallos en Linux. Los procedimientos históricos de esta guía conservan su revisión de referencia.
+
 - [Preparar el reactor](#preparar-una-copia-limpia)
 - [Corrida inicial con JDK 17](#corrida-inicial-con-jdk-17)
 - [Corrida focalizada de hilos virtuales con JDK 21](#corrida-focalizada-de-hilos-virtuales-con-jdk-21)
